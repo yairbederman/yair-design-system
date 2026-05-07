@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Color — Foreground</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; background: var(--bg-0); padding: 24px; }
+  .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .sw { height: 110px; border: 1px solid var(--rule); border-radius: 4px; padding: 14px; background: var(--bg-1); display: flex; flex-direction: column; justify-content: space-between; }
+  .ex { font-family: var(--font-display); font-size: 28px; font-weight: 500; letter-spacing: -0.02em; }
+  .meta { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .meta .k { color: var(--fg-3); }
+  .meta .v { color: var(--fg-3); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw"><span class="ex" style="color:#F5F5F2">Aa shipping</span><div class="meta"><span class="k">--fg-1</span><span class="v">#F5F5F2</span></div></div>
+    <div class="sw"><span class="ex" style="color:#A0A0A8">Aa shipping</span><div class="meta"><span class="k">--fg-2</span><span class="v">#A0A0A8</span></div></div>
+    <div class="sw"><span class="ex" style="color:#5A5A63">Aa shipping</span><div class="meta"><span class="k">--fg-3</span><span class="v">#5A5A63</span></div></div>
+  </div>
+</body>
+</html>

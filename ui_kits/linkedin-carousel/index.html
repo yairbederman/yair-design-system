@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>y[AI]r studio — LinkedIn carousel starter kit</title>
+  <link rel="stylesheet" href="../../colors_and_type.css">
+  <link rel="stylesheet" href="shared/carousel.css">
+  <style>
+    body { background: #050507; }
+
+    .index-shell {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 64px 48px 96px;
+      color: var(--fg-1);
+    }
+
+    .index-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 64px;
+    }
+    .index-head h1 {
+      font-family: var(--font-body-en);
+      font-weight: 600;
+      font-size: 44px;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin: 0;
+      max-width: 820px;
+    }
+    .index-head h1 em { color: var(--accent); font-style: normal; }
+    .index-head .meta {
+      font-family: var(--font-mono-en);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fg-3);
+      text-align: right;
+      line-height: 1.8;
+    }
+    .index-head .meta span { color: var(--fg-2); }
+
+    .row {
+      margin-bottom: 80px;
+    }
+    .row-head {
+      display: flex;
+      gap: 16px;
+      align-items: baseline;
+      margin-bottom: 24px;
+      font-family: var(--font-mono-en);
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--fg-3);
+    }
+    .row-head .num { color: var(--accent); }
+    .row-head .label { color: var(--fg-1); font-size: 16px; letter-spacing: 0.04em; }
+    .row-head .rule { flex: 1; height: 1px; background: var(--rule); align-self: center; }
+
+    .row-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 1100px) { .row-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 800px)  { .row-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .cell {
+      background: var(--bg-1);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 1080 / 1350;
+    }
+    .cell iframe {
+      position: absolute;
+      inset: 0;
+      width: 1080px;
+      height: 1350px;
+      border: 0;
+      transform-origin: top left;
+      pointer-events: none;
+    }
+    .cell-label {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      z-index: 2;
+      font-family: var(--font-mono-en);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fg-1);
+      background: rgba(10,10,11,0.78);
+      backdrop-filter: blur(4px);
+      padding: 6px 10px;
+      border: 1px solid var(--rule-strong);
+    }
+    .cell-link {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      z-index: 2;
+      font-family: var(--font-mono-en);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(10,10,11,0.78);
+      backdrop-filter: blur(4px);
+      padding: 6px 10px;
+      border: 1px solid var(--accent-rule);
+      text-decoration: none;
+    }
+    .cell-link:hover { background: var(--accent); color: var(--bg-0); }
+
+    .legend {
+      margin-top: 32px;
+      padding: 24px;
+      background: var(--bg-1);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px 48px;
+      max-width: 1100px;
+    }
+    .legend h3 {
+      grid-column: 1 / -1;
+      font-family: var(--font-mono-en);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--fg-1);
+      margin: 0 0 8px;
+    }
+    .legend dt {
+      font-family: var(--font-mono-en);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .legend dd {
+      margin: 0 0 16px;
+      font-family: var(--font-body-en);
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--fg-2);
+    }
+  </style>
+</head>
+<body>
+  <div class="index-shell">
+
+    <header class="index-head">
+      <h1>linkedin carousel starter — <em>11 slide types × 2 languages</em>.</h1>
+      <div class="meta">
+        format <span>1080 × 1350</span><br>
+        canvas <span>portrait, dark</span><br>
+        brand <span>y[AI]r studio</span>
+      </div>
+    </header>
+
+    <section class="row">
+      <div class="row-head">
+        <span class="num">EN</span><span class="label">english · ltr</span>
+        <span class="rule"></span>
+        <span>inter · geist mono</span>
+      </div>
+      <div class="row-grid" id="grid-en"></div>
+    </section>
+
+    <section class="row">
+      <div class="row-head">
+        <span class="num">HE</span><span class="label">עברית · rtl</span>
+        <span class="rule"></span>
+        <span>assistant · ibm plex mono (small only)</span>
+      </div>
+      <div class="row-grid" id="grid-he"></div>
+
+      <div class="legend">
+        <h3>template roster · when to use</h3>
+        <div>
+          <dt>01 · cover</dt><dd>open the carousel — series eyebrow, hook headline, swipe cue.</dd>
+          <dt>02 · content</dt><dd>set up the gap — short lede + body, one accent label.</dd>
+          <dt>03 · cta</dt><dd>call to action + wordmark. early CTA so the closer can be a punchline.</dd>
+          <dt>04 · big claim</dt><dd>one declarative line as the whole slide. used to break rhythm.</dd>
+          <dt>05 · list</dt><dd>numbered framework — five reasons, three principles, four steps.</dd>
+          <dt>06 · before-after</dt><dd>two stacked panels with an "in production" hinge.</dd>
+        </div>
+        <div>
+          <dt>07 · mistake → correction</dt><dd>struck-through wrong take, then the corrected position.</dd>
+          <dt>08 · process</dt><dd>numbered pipeline of steps with gates — show the workflow.</dd>
+          <dt>09 · case</dt><dd>client + scope + stack + a single hero outcome number.</dd>
+          <dt>10 · metric</dt><dd>one giant number as the slide. before→after context underneath.</dd>
+          <dt>11 · punchline</dt><dd>final slide — display quote with one accent word. closes the carousel.</dd>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // Canonical slide order — 01..11. Cover → content → CTA up front; punchline closes.
+    const SLIDES = [
+      { num: '01', slug: 'cover',         label: '01 · cover' },
+      { num: '02', slug: 'content',       label: '02 · content' },
+      { num: '03', slug: 'cta',           label: '03 · cta' },
+      { num: '04', slug: 'big-claim',     label: '04 · big claim' },
+      { num: '05', slug: 'list',          label: '05 · list' },
+      { num: '06', slug: 'before-after',  label: '06 · before / after' },
+      { num: '07', slug: 'mistake',       label: '07 · mistake → fix' },
+      { num: '08', slug: 'process',       label: '08 · process' },
+      { num: '09', slug: 'case',          label: '09 · case' },
+      { num: '10', slug: 'metric',        label: '10 · metric' },
+      { num: '11', slug: 'punchline',     label: '11 · punchline' },
+    ];
+
+    function buildGrid(host, lang) {
+      const root = document.getElementById(host);
+      SLIDES.forEach(s => {
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        const src = `${lang}/${s.num}-${s.slug}.html`;
+        cell.innerHTML =
+          `<iframe data-src="${src}" loading="lazy"></iframe>` +
+          `<span class="cell-label">${s.label}</span>` +
+          `<a class="cell-link" href="${src}" target="_blank">open ↗</a>`;
+        root.appendChild(cell);
+      });
+    }
+    buildGrid('grid-en', 'english');
+    buildGrid('grid-he', 'hebrew');
+
+    function fitCells() {
+      document.querySelectorAll('.cell').forEach(cell => {
+        const iframe = cell.querySelector('iframe');
+        if (!iframe) return;
+        if (!iframe.src && iframe.dataset.src) iframe.src = iframe.dataset.src;
+        const w = cell.clientWidth;
+        if (w <= 0) return;
+        const scale = w / 1080;
+        iframe.style.transform = `scale(${scale})`;
+        iframe.style.width  = '1080px';
+        iframe.style.height = '1350px';
+      });
+    }
+    addEventListener('resize', fitCells);
+    requestAnimationFrame(() => requestAnimationFrame(fitCells));
+    addEventListener('load', fitCells);
+
+    document.querySelectorAll('.cell iframe').forEach(f => {
+      f.addEventListener('load', () => {
+        try {
+          const slide = f.contentDocument && f.contentDocument.querySelector('.slide');
+          if (slide) slide.style.setProperty('--carousel-scale', 1);
+          const stage = f.contentDocument && f.contentDocument.querySelector('.carousel-stage');
+          if (stage) {
+            stage.style.padding = '0';
+            stage.style.minHeight = '1350px';
+            stage.style.background = 'transparent';
+          }
+        } catch (_) {}
+      });
+    });
+  </script>
+</body>
+</html>

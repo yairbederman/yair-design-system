@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Color — Accent</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; background: var(--bg-0); padding: 24px; }
+  .row { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 12px; }
+  .sw { height: 110px; border: 1px solid var(--rule); border-radius: 4px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between; }
+  .name { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .hex  { font-family: var(--font-mono); font-size: 11px; }
+  .big  { font-family: var(--font-display); font-weight: 700; font-size: 32px; letter-spacing: -0.03em; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw" style="background:#FF4B1F"><span class="big" style="color:#0A0A0B">[AI]</span><div style="display:flex;justify-content:space-between"><span class="name" style="color:#0A0A0B">--accent</span><span class="hex" style="color:#0A0A0B">#FF4B1F</span></div></div>
+    <div class="sw" style="background:#FF6238"><span class="name" style="color:#0A0A0B">hover</span><span class="hex" style="color:#0A0A0B">#FF6238</span></div>
+    <div class="sw" style="background:#E63E15"><span class="name" style="color:#FFFFFF">press</span><span class="hex" style="color:#FFFFFF">#E63E15</span></div>
+    <div class="sw" style="background:rgba(255,75,31,0.12); border-color:rgba(255,75,31,0.32)"><span class="name" style="color:#FF6238">soft</span><span class="hex" style="color:#FF6238">12% alpha</span></div>
+  </div>
+</body>
+</html>

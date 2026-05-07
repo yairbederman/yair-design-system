@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Type — Display</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; background: var(--bg-0); padding: 32px 24px; }
+  .stack { display: flex; flex-direction: column; gap: 18px; }
+  .row { display: flex; align-items: baseline; gap: 24px; border-bottom: 1px dashed var(--rule); padding-bottom: 14px; }
+  .row:last-child { border-bottom: 0; }
+  .meta { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); width: 130px; flex-shrink: 0; }
+  .ex { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.04em; line-height: 1; color: var(--fg-1); }
+</style>
+</head>
+<body>
+<div class="stack">
+  <div class="row"><span class="meta">display · 88/1.0</span><span class="ex" style="font-size:64px">ship, don't demo</span></div>
+  <div class="row"><span class="meta">h1 · 64/1.05</span><span class="ex" style="font-size:48px">no spec, no code</span></div>
+  <div class="row"><span class="meta">h2 · 36/1.2</span><span class="ex" style="font-size:36px; letter-spacing:-0.02em">verification gates &amp; humans-in-the-loop</span></div>
+</div>
+</body>
+</html>

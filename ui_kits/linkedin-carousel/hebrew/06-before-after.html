@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <title>HE · 06 before-after — y[AI]r studio carousel</title>
+  <link rel="stylesheet" href="../../../colors_and_type.css">
+  <link rel="stylesheet" href="../../linkedin-carousel/shared/carousel.css">
+</head>
+<body>
+  <div class="carousel-stage">
+    <article class="slide is-beforeafter" dir="rtl" data-screen-label="HE · 06 Before · after">
+      <!-- HE: vertical stack order is identical to EN (before on top, after below); only inline text flow mirrors RTL. -->
+      <div class="slide-frame">
+
+        <header class="slide-header">
+          <span class="slide-eyebrow">שטח <span class="dot">·</span> AI בפרודקשן</span>
+          <span class="slide-stamp" dir="ltr"><span class="num">06</span> / 11</span>
+        </header>
+
+        <main class="slide-main">
+          <div class="ba-stack">
+            <div class="ba-panel before">
+              <span class="ba-tag">לפני</span>
+              <p class="ba-line">פרומפט חכם שעבד פעם אחת בדמו, מודבק לנוטבוק.</p>
+            </div>
+            <div class="ba-arrow">בפרודקשן</div>
+            <div class="ba-panel after">
+              <span class="ba-tag">אחרי</span>
+              <p class="ba-line">מסמך אפיון מנוהל גרסאות, מערך ולידציה, ושער אנושי לפני שהלקוח רואה תוצאה.</p>
+            </div>
+          </div>
+        </main>
+
+        <footer class="slide-footer">
+          <span class="wordmark-slot" dir="ltr">
+            <img class="footer-logo" src="../../../assets/wordmark-compact.svg" alt="y[AI]r studio" style="height:24px;width:auto;display:block" />
+          </span>
+          <span class="page-num" dir="ltr"><span class="now">06</span><span class="sep">/</span>11</span>
+        </footer>
+
+      </div>
+    </article>
+  </div>
+
+  <script>
+    function fit() {
+      const slide = document.querySelector('.slide');
+      const stage = document.querySelector('.carousel-stage');
+      if (!slide || !stage) return;
+      const pad = 48;
+      const sw = (stage.clientWidth  - pad) / 1080;
+      const sh = (stage.clientHeight - pad) / 1350;
+      slide.style.setProperty('--carousel-scale', Math.min(sw, sh, 1));
+    }
+    addEventListener('resize', fit);
+    fit();
+  </script>
+</body>
+</html>

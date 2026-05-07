@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Logo variants — y[AI]r studio</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; background: var(--bg-0); padding: 24px; min-height: 100vh; box-sizing: border-box; color: var(--fg-1); font-family: var(--font-mono); }
+  h1 { font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); margin: 0 0 4px; }
+  h1 .num { color: var(--accent); }
+  .sub  { font-size: 11px; color: var(--fg-3); margin: 0 0 16px; letter-spacing: 0.04em; }
+  section { margin-bottom: 32px; }
+
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+  .tile { border: 1px solid var(--rule); border-radius: 4px; display: flex; flex-direction: column; overflow: hidden; min-height: 180px; }
+  .tile .canvas { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; gap: 16px; }
+  .tile .lab { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); padding: 8px 12px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 8px; }
+  .tile .lab .src { color: var(--fg-2); }
+
+  .t-card  { background: var(--bg-1); }
+  .t-elev  { background: var(--bg-2); }
+  .t-light { background: #FAFAF7; }
+  .t-light .lab { color: #5A5A63; border-top-color: #E5E5E0; }
+  .t-light .lab .src { color: #2A2A2E; }
+
+  .canvas img.wm  { width: 100%; max-width: 280px; height: auto; }
+  .canvas img.wm-sm { max-width: 180px; }
+  .canvas img.av  { width: 96px; height: 96px; }
+  .canvas img.fav { image-rendering: -webkit-optimize-contrast; }
+
+  /* Rule strip */
+  .rules { background: var(--bg-1); border: 1px solid var(--rule); border-radius: 4px; padding: 20px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px 48px; font-size: 12px; line-height: 1.6; }
+  .rules .row { display: grid; grid-template-columns: 130px 1fr; gap: 16px; align-items: baseline; }
+  .rules .k { color: var(--fg-3); text-transform: uppercase; letter-spacing: 0.08em; font-size: 10px; }
+  .rules .v { color: var(--fg-1); }
+  .rules .v .accent { color: var(--accent); }
+  .rules .v code { color: var(--fg-2); font-size: 11px; }
+  .wm-name .accent { color: var(--accent); }
+</style>
+</head>
+<body>
+
+  <section>
+    <h1><span class="num">00</span> &nbsp;— &nbsp;Logo system rules</h1>
+    <p class="sub">Visual identity ≠ written identity. Use the right form for the surface.</p>
+    <div class="rules">
+      <div class="row"><span class="k">Visual logo</span><span class="v">Block lockup &nbsp; <strong>y - [AI block] - r</strong> &nbsp;— hero, header, footer, social card</span></div>
+      <div class="row"><span class="k">Written brand</span><span class="v"><span class="wm-name">y<span class="accent">[AI]</span>r studio</span> &nbsp;— body copy, docs, accessible labels</span></div>
+      <div class="row"><span class="k">Avatar / favicon</span><span class="v">[AI] block on dark tile — social profiles, app icons, browser tabs</span></div>
+      <div class="row"><span class="k">aria-label</span><span class="v">always <code>"y[AI]r studio"</code> — screen readers get the written brand</span></div>
+      <div class="row"><span class="k">Hero element</span><span class="v">AI block dominates; side dashes are subtle and recede</span></div>
+      <div class="row"><span class="k">Colors</span><span class="v">Two only: foreground + <span class="accent">accent</span>. No gradient, shadow, third color.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h1><span class="num">01</span> &nbsp;— &nbsp;Primary visual logo · block</h1>
+    <p class="sub">Match this set, in this order. The cream-block primary is the default; the accent block is for moments that need brand color.</p>
+    <div class="grid-4">
+      <div class="tile">
+        <div class="canvas"><img class="wm" src="../assets/wordmark.svg" alt="y[AI]r studio"></div>
+        <div class="lab"><span>primary · dark</span><span class="src">wordmark.svg</span></div>
+      </div>
+      <div class="tile">
+        <div class="canvas"><img class="wm" src="../assets/wordmark-accent.svg" alt="y[AI]r studio · accent block"></div>
+        <div class="lab"><span>accent block</span><span class="src">wordmark-accent.svg</span></div>
+      </div>
+      <div class="tile t-light">
+        <div class="canvas"><img class="wm" src="../assets/wordmark-light.svg" alt="y[AI]r studio · on light"></div>
+        <div class="lab"><span>on light</span><span class="src">wordmark-light.svg</span></div>
+      </div>
+      <div class="tile">
+        <div class="canvas"><img class="av" src="../assets/avatar.svg" alt="y[AI]r studio · avatar"></div>
+        <div class="lab"><span>avatar / favicon</span><span class="src">avatar.svg</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h1><span class="num">02</span> &nbsp;— &nbsp;Compact &amp; mono</h1>
+    <p class="sub">For tight nav bars, embedded uses, and any surface that can only carry one ink.</p>
+    <div class="grid-3">
+      <div class="tile t-card">
+        <div class="canvas"><img class="wm" src="../assets/wordmark-compact.svg" alt="y[AI]r" style="max-width:240px"></div>
+        <div class="lab"><span>compact · no caption</span><span class="src">wordmark-compact.svg</span></div>
+      </div>
+      <div class="tile t-elev">
+        <div class="canvas"><span style="color:#FF4B1F; display:inline-flex"><img class="wm" src="../assets/wordmark-mono.svg" alt="y[AI]r studio · mono" style="max-width:240px"></span></div>
+        <div class="lab"><span>mono · currentColor</span><span class="src">wordmark-mono.svg</span></div>
+      </div>
+      <div class="tile t-light">
+        <div class="canvas"><span style="color:#0A0A0B; display:inline-flex"><img class="wm" src="../assets/wordmark-mono.svg" alt="y[AI]r studio · mono on light" style="max-width:240px"></span></div>
+        <div class="lab"><span>mono · on light</span><span class="src">wordmark-mono.svg</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h1><span class="num">03</span> &nbsp;— &nbsp;Avatar &amp; favicon · scale</h1>
+    <p class="sub">[AI] block alone — outlined on a dark tile. Holds up at 16px.</p>
+    <div class="grid-4">
+      <div class="tile">
+        <div class="canvas" style="gap: 24px;">
+          <img class="av" src="../assets/avatar.svg" alt="" style="width:96px;height:96px">
+          <img class="av" src="../assets/avatar.svg" alt="" style="width:64px;height:64px">
+          <img class="av" src="../assets/avatar.svg" alt="" style="width:40px;height:40px">
+        </div>
+        <div class="lab"><span>avatar · scale</span><span class="src">96 · 64 · 40</span></div>
+      </div>
+      <div class="tile">
+        <div class="canvas" style="gap: 20px;">
+          <img class="fav" src="../assets/favicon.svg" alt="favicon 32" style="width:32px;height:32px">
+          <img class="fav" src="../assets/favicon.svg" alt="favicon 24" style="width:24px;height:24px">
+          <img class="fav" src="../assets/favicon.svg" alt="favicon 16" style="width:16px;height:16px">
+        </div>
+        <div class="lab"><span>favicon · scale</span><span class="src">32 · 24 · 16</span></div>
+      </div>
+      <div class="tile t-card">
+        <div class="canvas">
+          <span class="wm-name" style="font-size: 22px; letter-spacing: -0.02em; color: var(--fg-1);">
+            y<span class="accent">[AI]</span>r&nbsp;studio
+          </span>
+        </div>
+        <div class="lab"><span>written brand · in copy</span><span class="src">html/css</span></div>
+      </div>
+      <div class="tile t-light">
+        <div class="canvas">
+          <span class="wm-name" style="font-size: 22px; letter-spacing: -0.02em; color: #0A0A0B;">
+            y<span class="accent">[AI]</span>r&nbsp;studio
+          </span>
+        </div>
+        <div class="lab"><span>written brand · on light</span><span class="src">html/css</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h1><span class="num">04</span> &nbsp;— &nbsp;Written brand · CSS treatment</h1>
+    <p class="sub">For runs of text where the brand appears inline. Never substitute the visual logo here.</p>
+    <div class="grid-3">
+      <div class="tile">
+        <div class="canvas">
+          <span class="wordmark" aria-label="y[AI]r studio">
+            <span class="wordmark-y">y</span><span class="wordmark-bracket">[</span><span class="wordmark-ai">AI</span><span class="wordmark-bracket">]</span><span class="wordmark-r">r</span>
+          </span>
+        </div>
+        <div class="lab"><span>.wordmark · inline</span><span class="src">html/css</span></div>
+      </div>
+      <div class="tile t-card">
+        <div class="canvas">
+          <span class="wordmark-group wordmark-stack" aria-label="y[AI]r studio">
+            <span class="wordmark">
+              <span class="wordmark-y">y</span><span class="wordmark-bracket">[</span><span class="wordmark-ai">AI</span><span class="wordmark-bracket">]</span><span class="wordmark-r">r</span>
+            </span>
+            <span class="wordmark-studio">studio</span>
+          </span>
+        </div>
+        <div class="lab"><span>.wordmark-group · stack</span><span class="src">with caption</span></div>
+      </div>
+      <div class="tile t-light">
+        <div class="canvas">
+          <span class="wordmark" aria-label="y[AI]r studio">
+            <span class="wordmark-y" style="color:#0A0A0B">y</span><span class="wordmark-bracket">[</span><span class="wordmark-ai">AI</span><span class="wordmark-bracket">]</span><span class="wordmark-r" style="color:#0A0A0B">r</span>
+          </span>
+        </div>
+        <div class="lab"><span>.wordmark · on light</span><span class="src">html/css</span></div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

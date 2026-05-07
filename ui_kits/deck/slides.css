@@ -1,0 +1,201 @@
+/* ============================================================
+   Deck slides — y[AI]r studio
+   ------------------------------------------------------------
+   CANONICAL TYPOGRAPHY (Phase 3 alignment):
+     - Body / display headlines:  Inter   (--font-body-en)
+     - Technical labels & meta:   Geist Mono (--font-mono-en)
+   The deck no longer drives anything off the deprecated
+   --font-display / --font-body tokens (JetBrains Mono /
+   IBM Plex Sans). Those remain available for legacy notes
+   only. New deck work MUST use the canonical pair below.
+   ============================================================ */
+
+.slide {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-0);
+  color: var(--fg-1);
+  position: relative;
+  padding: 80px 96px;
+  box-sizing: border-box;
+  overflow: hidden;
+  /* Inter at the deck level. Headlines override below. */
+  font-family: var(--font-body-en);
+}
+.slide-light  { background: var(--bg-1); }
+.slide-accent { background: var(--accent); color: var(--bg-0); }
+
+/* Top brand-stamp + slide counter — Geist Mono, small technical label. */
+.slide-stamp {
+  position: absolute; top: 40px; left: 96px; right: 96px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-mono-en); font-size: 14px;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--fg-3);
+}
+.stamp-mark { font-size: 16px; }
+.stamp-logo { height: 22px; width: auto; display: block; }
+
+.title-mark { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 32px; position: relative; }
+.title-mark .hero-mark { font-size: 200px; }
+.title-mark .wordmark-studio { font-size: 22px; letter-spacing: 0.7em; padding-left: 1.5em; padding-right: 0; margin-top: 24px; }
+.title-logo { width: min(1200px, 80%); height: auto; display: block; }
+
+.slide-foot {
+  position: absolute; bottom: 40px; left: 96px; right: 96px;
+  display: flex; justify-content: space-between;
+  font-family: var(--font-mono-en); font-size: 12px;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--fg-3);
+}
+
+/* ---------- Title slide ---------- */
+.s-title { display: flex; flex-direction: column; justify-content: flex-end; }
+.s-title .dot-grid { position: absolute; inset: 0; opacity: 0.18; }
+.s-title h1 {
+  font-family: var(--font-body-en);
+  font-size: 128px; font-weight: 600;
+  letter-spacing: -0.04em; line-height: 0.98;
+  color: var(--fg-1); margin: 0 0 32px; position: relative;
+}
+.s-title h1 .ai { color: var(--accent); font-weight: 700; }
+.s-title .tag {
+  font-family: var(--font-body-en);
+  font-size: 28px; color: var(--fg-2);
+  max-width: 900px; line-height: 1.35;
+  font-weight: 400; position: relative;
+}
+
+/* ---------- Section divider ---------- */
+.s-section { display: flex; flex-direction: column; justify-content: center; }
+.s-section .num {
+  font-family: var(--font-mono-en);
+  font-size: 32px; color: var(--accent);
+  font-weight: 500; letter-spacing: 0.04em;
+  margin-bottom: 16px;
+}
+.s-section h2 {
+  font-family: var(--font-body-en);
+  font-size: 96px; font-weight: 600;
+  letter-spacing: -0.035em; line-height: 1.02;
+  color: var(--fg-1); margin: 0; max-width: 1400px;
+}
+
+/* ---------- Content slide ---------- */
+.s-content { padding-top: 110px; }
+.s-content h2 {
+  font-family: var(--font-body-en);
+  font-size: 56px; font-weight: 600;
+  letter-spacing: -0.025em; line-height: 1.08;
+  color: var(--fg-1); margin: 0 0 48px; max-width: 1400px;
+}
+.s-content .body { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.s-content .body p {
+  font-family: var(--font-body-en);
+  font-size: 22px; line-height: 1.55;
+  color: var(--fg-2); margin: 0 0 16px;
+}
+.s-content .body .lead {
+  color: var(--fg-1); font-size: 28px; line-height: 1.4; font-weight: 500;
+}
+
+/* ---------- Metrics slide ---------- */
+.s-metrics { padding-top: 110px; }
+.s-metrics h2 {
+  font-family: var(--font-body-en);
+  font-size: 48px; font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--fg-1); margin: 0 0 48px;
+}
+.s-metrics .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.s-metrics .cell { border-left: 2px solid var(--rule); padding-left: 24px; }
+.s-metrics .num {
+  /* Numerals stay Geist Mono — tabular alignment matters here. */
+  font-family: var(--font-mono-en);
+  font-size: 112px; font-weight: 500;
+  letter-spacing: -0.04em; line-height: 1;
+  color: var(--fg-1); font-variant-numeric: tabular-nums;
+}
+.s-metrics .num .delta { color: var(--accent); }
+.s-metrics .lab {
+  font-family: var(--font-mono-en);
+  font-size: 16px; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--fg-3); margin-top: 16px;
+}
+.s-metrics .ba {
+  font-family: var(--font-mono-en);
+  font-size: 16px; color: var(--fg-2); margin-top: 6px;
+}
+
+/* ---------- Quote slide ---------- */
+.s-quote { display: flex; flex-direction: column; justify-content: center; padding: 80px 160px; }
+.s-quote blockquote {
+  font-family: var(--font-body-en);
+  font-size: 72px; font-weight: 600;
+  letter-spacing: -0.03em; line-height: 1.12;
+  color: var(--fg-1); margin: 0 0 48px; max-width: 1500px;
+}
+.s-quote blockquote .hl { color: var(--accent); }
+.s-quote cite {
+  font-family: var(--font-mono-en);
+  font-size: 18px; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--fg-3); font-style: normal;
+}
+
+/* ---------- Diagram slide ---------- */
+.s-diagram { padding-top: 110px; }
+.s-diagram h2 {
+  font-family: var(--font-body-en);
+  font-size: 48px; font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--fg-1); margin: 0 0 48px;
+}
+.s-diagram pre {
+  font-family: var(--font-mono-en);
+  font-size: 22px; line-height: 1.4;
+  color: var(--fg-2); white-space: pre;
+}
+.s-diagram pre .hl { color: var(--accent); }
+
+/* ---------- Comparison slide ---------- */
+.s-compare { padding-top: 110px; }
+.s-compare h2 {
+  font-family: var(--font-body-en);
+  font-size: 48px; font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--fg-1); margin: 0 0 48px;
+}
+.s-compare .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.s-compare .col { border: 1px solid var(--rule); border-radius: 4px; padding: 32px; background: var(--bg-1); }
+.s-compare .col.bad  { border-color: rgba(229, 72, 77, 0.3); }
+.s-compare .col.good { border-color: var(--accent-rule); background: rgba(255, 75, 31, 0.04); }
+.s-compare .col h3 {
+  font-family: var(--font-mono-en);
+  font-size: 14px; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--fg-3); margin: 0 0 16px;
+}
+.s-compare .col.good h3 { color: var(--accent); }
+.s-compare .col ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.s-compare .col li {
+  font-family: var(--font-body-en);
+  font-size: 22px; line-height: 1.45;
+  color: var(--fg-1); padding-left: 28px; position: relative;
+}
+.s-compare .col.bad  li::before { content: "✗"; position: absolute; left: 0; color: var(--err); }
+.s-compare .col.good li::before { content: "✓"; position: absolute; left: 0; color: var(--ok); }
+
+/* ---------- Closing slide ---------- */
+.s-close { display: flex; flex-direction: column; justify-content: center; }
+.s-close h2 {
+  font-family: var(--font-body-en);
+  font-size: 96px; font-weight: 600;
+  letter-spacing: -0.04em; line-height: 1.02;
+  color: var(--fg-1); margin: 0 0 48px;
+}
+.s-close .meta { display: flex; gap: 64px; padding-top: 32px; border-top: 1px solid var(--rule); }
+.s-close .meta > div { font-family: var(--font-mono-en); font-size: 18px; }
+.s-close .meta .k {
+  color: var(--fg-3); text-transform: uppercase;
+  letter-spacing: 0.08em; font-size: 13px; margin-bottom: 4px;
+}
+.s-close .meta .v { color: var(--fg-1); }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Type — Mono labels</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; background: var(--bg-0); padding: 24px; }
+  .grid { display: grid; grid-template-columns: 130px 1fr; gap: 14px 24px; align-items: center; }
+  .meta { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); }
+  .ui { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-1); font-weight: 500; }
+  .idx { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); }
+  .idx .num { color: var(--accent); margin-right: 8px; }
+  .cap { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); letter-spacing: 0.04em; }
+  .code { font-family: var(--font-mono); font-size: 14px; color: var(--accent); background: var(--bg-1); border: 1px solid var(--rule); border-radius: 2px; padding: 1px 6px; }
+</style>
+</head>
+<body>
+<div class="grid">
+  <span class="meta">ui label</span><span class="ui">services / approach / contact</span>
+  <span class="meta">section index</span><span class="idx"><span class="num">01</span>— services</span>
+  <span class="meta">caption</span><span class="cap">fig 02 — agentic feature lifecycle, q1 2026</span>
+  <span class="meta">inline code</span><span><span class="cap" style="color:var(--fg-1)">spec validated via</span> <span class="code">claude.complete()</span></span>
+</div>
+</body>
+</html>

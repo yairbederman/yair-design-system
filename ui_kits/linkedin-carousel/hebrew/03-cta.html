@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <title>HE · 03 cta — y[AI]r studio carousel</title>
+  <link rel="stylesheet" href="../../../colors_and_type.css">
+  <link rel="stylesheet" href="../../linkedin-carousel/shared/carousel.css">
+</head>
+<body>
+  <div class="carousel-stage">
+    <article class="slide is-cta" dir="rtl" data-screen-label="HE · 03 CTA">
+      <!-- HE: hi@yair.studio email and /in/yair handle stay LTR atoms in the footer; headline flows RTL above the (Latin) wordmark, which sits centered. -->
+      <div class="slide-frame">
+
+        <header class="slide-header">
+          <span class="slide-eyebrow">שטח <span class="dot">·</span> AI בפרודקשן</span>
+          <span class="slide-stamp" dir="ltr"><span class="num">03</span> / 11</span>
+        </header>
+
+        <main class="slide-main">
+
+          <h2 class="slide-display cta-headline">
+            אל תבנו דמו.<br>
+            <span style="color:var(--accent);">בנו מערכת.</span>
+          </h2>
+
+          <span class="cta-callout">דברו איתנו ← <span dir="ltr">hi@yair.studio</span></span>
+
+          <span class="cta-wordmark">
+            <img class="cta-logo" src="../../../assets/wordmark.svg" alt="y[AI]r studio" style="width:min(60%,520px);height:auto;display:block;margin:0 auto" />
+          </span>
+
+        </main>
+
+        <footer class="slide-footer">
+          <span>עקבו אחרינו · <span dir="ltr">/in/yair</span></span>
+          <span class="page-num" dir="ltr"><span class="now">03</span><span class="sep">/</span>11</span>
+        </footer>
+
+      </div>
+    </article>
+  </div>
+
+  <script>
+    function fit() {
+      const slide = document.querySelector('.slide');
+      const stage = document.querySelector('.carousel-stage');
+      if (!slide || !stage) return;
+      const pad = 48;
+      const sw = (stage.clientWidth  - pad) / 1080;
+      const sh = (stage.clientHeight - pad) / 1350;
+      slide.style.setProperty('--carousel-scale', Math.min(sw, sh, 1));
+    }
+    addEventListener('resize', fit);
+    fit();
+  </script>
+</body>
+</html>

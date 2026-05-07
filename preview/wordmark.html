@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wordmark — y[AI]r studio</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body {
+    margin: 0;
+    background: var(--bg-0);
+    color: var(--fg-1);
+    font-family: var(--font-mono);
+    padding: 64px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  section { display: flex; flex-direction: column; align-items: center; gap: 16px; max-width: 720px; text-align: center; }
+  .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--fg-3); margin: 0; }
+  .eyebrow .num { color: var(--accent); }
+  .subtitle { font-size: 12px; color: var(--fg-2); letter-spacing: 0.04em; margin: 0; }
+  .stage { padding: 32px 8px; }
+  .stage img { display: block; width: 100%; max-width: 560px; height: auto; }
+  .secondary .stage { padding: 28px 8px; }
+  .secondary .lockup .wordmark-group { font-size: 64px; }
+  hr { width: 100%; max-width: 720px; border: 0; border-top: 1px solid var(--rule); margin: 0; }
+</style>
+</head>
+<body>
+
+  <section class="primary">
+    <p class="eyebrow"><span class="num">01</span> &nbsp;— &nbsp;Block AI logo · primary visual mark</p>
+    <div class="stage">
+      <img src="../assets/wordmark.svg" alt="y[AI]r studio">
+    </div>
+    <p class="subtitle">Block AI logo — primary visual mark</p>
+  </section>
+
+  <hr>
+
+  <section class="secondary">
+    <p class="eyebrow"><span class="num">02</span> &nbsp;— &nbsp;Inline written brand treatment · not primary logo</p>
+    <div class="stage lockup">
+      <span class="wordmark-group wordmark-stack" aria-label="y[AI]r studio">
+        <span class="wordmark">
+          <span class="wordmark-y">y</span><span class="wordmark-bracket">[</span><span class="wordmark-ai">AI</span><span class="wordmark-bracket">]</span><span class="wordmark-r">r</span>
+        </span>
+        <span class="wordmark-studio">studio</span>
+      </span>
+    </div>
+    <p class="subtitle">Inline written brand treatment — not primary logo</p>
+  </section>
+
+</body>
+</html>
+</content>
+<parameter name="asset">wordmark

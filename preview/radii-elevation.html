@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Radii & elevation</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; background: var(--bg-0); padding: 24px; }
+  .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .box { height: 110px; background: var(--bg-1); border: 1px solid var(--rule); display: flex; flex-direction: column; justify-content: space-between; padding: 12px; }
+  .lab { font-family: var(--font-mono); font-size: 11px; color: var(--fg-1); }
+  .meta { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); }
+  .elev { background: var(--bg-2); box-shadow: var(--edge-top-strong); }
+</style>
+</head>
+<body>
+<div class="row">
+  <div class="box" style="border-radius:0"><span class="lab">0px</span><span class="meta">none · rules</span></div>
+  <div class="box" style="border-radius:2px"><span class="lab">2px</span><span class="meta">--r-sm · chips</span></div>
+  <div class="box" style="border-radius:4px"><span class="lab">4px</span><span class="meta">--r-md · default</span></div>
+  <div class="box elev" style="border-radius:4px"><span class="lab">elevated</span><span class="meta">inset top hl, no shadow</span></div>
+</div>
+</body>
+</html>

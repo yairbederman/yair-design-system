@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <title>HE · 11 punchline — y[AI]r studio carousel</title>
+  <link rel="stylesheet" href="../../../colors_and_type.css">
+  <link rel="stylesheet" href="../../linkedin-carousel/shared/carousel.css">
+</head>
+<body>
+  <div class="carousel-stage">
+    <article class="slide is-punchline" dir="rtl" data-screen-label="HE · 11 Punchline">
+      <!-- HE: opening/closing quote marks swap visual sides under RTL; the cite line keeps Latin name + brand wrapped dir="ltr" so y[AI]r reads left-to-right. -->
+      <div class="slide-frame">
+
+        <header class="slide-header">
+          <span class="slide-eyebrow">שטח <span class="dot">·</span> AI בפרודקשן</span>
+          <span class="slide-stamp" dir="ltr"><span class="num">11</span> / 11</span>
+        </header>
+
+        <main class="slide-main">
+          <p class="punchline-quote">
+            <span class="mark">"</span><span class="ltr-inline" dir="ltr">AI</span> כבר לא בדרך.<br>
+            הוא <span class="hl">פה</span> — ורוב<br>
+            הצוותים עדיין<br>
+            מריצים דמואים.<span class="mark">"</span>
+          </p>
+          <cite class="punchline-cite"><span dir="ltr">yair</span> · מייסד · <span dir="ltr">y[AI]r studio</span></cite>
+        </main>
+
+        <footer class="slide-footer">
+          <span class="wordmark-slot" dir="ltr">
+            <img class="footer-logo" src="../../../assets/wordmark-compact.svg" alt="y[AI]r studio" style="height:24px;width:auto;display:block" />
+          </span>
+          <span class="page-num" dir="ltr"><span class="now">11</span><span class="sep">/</span>11</span>
+        </footer>
+
+      </div>
+    </article>
+  </div>
+
+  <script>
+    function fit() {
+      const slide = document.querySelector('.slide');
+      const stage = document.querySelector('.carousel-stage');
+      if (!slide || !stage) return;
+      const pad = 48;
+      const sw = (stage.clientWidth  - pad) / 1080;
+      const sh = (stage.clientHeight - pad) / 1350;
+      slide.style.setProperty('--carousel-scale', Math.min(sw, sh, 1));
+    }
+    addEventListener('resize', fit);
+    fit();
+  </script>
+</body>
+</html>

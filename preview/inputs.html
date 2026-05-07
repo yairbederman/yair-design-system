@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Inputs</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; background: var(--bg-0); padding: 24px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 640px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .lab { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); }
+  .focus { border-color: var(--accent) !important; }
+</style>
+</head>
+<body>
+<div class="grid">
+  <div class="field"><span class="lab">name</span><input class="input" value="Yair" /></div>
+  <div class="field"><span class="lab">company</span><input class="input" placeholder="acme inc." /></div>
+  <div class="field"><span class="lab">email · focused</span><input class="input focus" value="hi@yair.studio" /></div>
+  <div class="field"><span class="lab">stage</span><input class="input" value="we have an llm prototype" /></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dot grid + section index</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; background: var(--bg-0); position: relative; height: 100vh; }
+  .bg { position: absolute; inset: 0; background-image: radial-gradient(circle, var(--fg-3) 1px, transparent 1.5px); background-size: 24px 24px; opacity: 0.18; }
+  .content { position: relative; padding: 28px 32px; }
+  .idx { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); display: flex; gap: 12px; align-items: center; margin-bottom: 18px; }
+  .idx .num { color: var(--accent); }
+  .idx .line { flex: 1; height: 1px; background: var(--rule); }
+  h2 { font-family: var(--font-display); font-size: 36px; font-weight: 500; letter-spacing: -0.03em; color: var(--fg-1); margin: 0 0 8px; }
+  p { font-family: var(--font-body); color: var(--fg-2); font-size: 15px; line-height: 1.5; max-width: 520px; margin: 0; }
+</style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="content">
+    <div class="idx"><span class="num">02</span><span>case studies</span><span class="line"></span><span>2026</span></div>
+    <h2>real systems, in production.</h2>
+    <p>Not slideware. Each engagement ends with shipped code, a verification harness, and a team that can run it without me.</p>
+  </div>
+</body>
+</html>

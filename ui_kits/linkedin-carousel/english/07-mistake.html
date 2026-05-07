@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>EN · 07 mistake — y[AI]r studio carousel</title>
+  <link rel="stylesheet" href="../../../colors_and_type.css">
+  <link rel="stylesheet" href="../../linkedin-carousel/shared/carousel.css">
+</head>
+<body>
+  <div class="carousel-stage">
+    <article class="slide is-mistake" data-screen-label="EN · 07 Mistake · correction">
+      <div class="slide-frame">
+
+        <header class="slide-header">
+          <span class="slide-eyebrow">field notes <span class="dot">·</span> AI in production</span>
+          <span class="slide-stamp"><span class="num">07</span> / 11</span>
+        </header>
+
+        <main class="slide-main">
+          <span class="mistake-eyebrow">common mistake</span>
+          <p class="mistake-line">"let's ship the prototype and harden it later."</p>
+          <span class="correction-eyebrow">do this instead</span>
+          <p class="correction-line">treat the spec as the ship — <span class="hl">code is the byproduct</span>.</p>
+        </main>
+
+        <footer class="slide-footer">
+          <span class="wordmark-slot">
+            <img class="footer-logo" src="../../../assets/wordmark-compact.svg" alt="y[AI]r studio" style="height:24px;width:auto;display:block" />
+          </span>
+          <span class="page-num"><span class="now">07</span><span class="sep">/</span>11</span>
+        </footer>
+
+      </div>
+    </article>
+  </div>
+
+  <script>
+    function fit() {
+      const slide = document.querySelector('.slide');
+      const stage = document.querySelector('.carousel-stage');
+      if (!slide || !stage) return;
+      const pad = 48;
+      const sw = (stage.clientWidth  - pad) / 1080;
+      const sh = (stage.clientHeight - pad) / 1350;
+      slide.style.setProperty('--carousel-scale', Math.min(sw, sh, 1));
+    }
+    addEventListener('resize', fit);
+    fit();
+  </script>
+</body>
+</html>

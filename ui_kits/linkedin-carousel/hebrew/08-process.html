@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <title>HE · 08 process — y[AI]r studio carousel</title>
+  <link rel="stylesheet" href="../../../colors_and_type.css">
+  <link rel="stylesheet" href="../../linkedin-carousel/shared/carousel.css">
+</head>
+<body>
+  <div class="carousel-stage">
+    <article class="slide is-process" dir="rtl" data-screen-label="HE · 08 Process">
+      <!-- HE: pipeline reads right-to-left; step numerals stay on the right, gate badges land on the left of each row. -->
+      <div class="slide-frame">
+
+        <header class="slide-header">
+          <span class="slide-eyebrow">שטח <span class="dot">·</span> AI בפרודקשן</span>
+          <span class="slide-stamp" dir="ltr"><span class="num">08</span> / 11</span>
+        </header>
+
+        <main class="slide-main">
+          <h2 class="process-title">מחזור החיים של תהליך אג'נטי.</h2>
+          <div class="process-pipeline">
+            <div class="process-step"><span class="num">01</span><span class="label">קליטה — דרישות מהעסק</span><span class="gate">scoped</span></div>
+            <div class="process-step"><span class="num">02</span><span class="label">אפיון — מאומת, אין אפיון → אין קוד</span><span class="gate">human gate</span></div>
+            <div class="process-step"><span class="num">03</span><span class="label">משימות — פירוק ליחידות הניתנות לסקירה</span><span class="gate">human gate</span></div>
+            <div class="process-step"><span class="num">04</span><span class="label">בנייה — בעזרת <span class="ltr-inline" dir="ltr">AI</span>, עם code review</span><span class="gate">verified</span></div>
+            <div class="process-step"><span class="num">05</span><span class="label">בדיקה — מערך ולידציה על כל שינוי</span><span class="gate">עלה לאוויר</span></div>
+          </div>
+        </main>
+
+        <footer class="slide-footer">
+          <span class="wordmark-slot" dir="ltr">
+            <img class="footer-logo" src="../../../assets/wordmark-compact.svg" alt="y[AI]r studio" style="height:24px;width:auto;display:block" />
+          </span>
+          <span class="page-num" dir="ltr"><span class="now">08</span><span class="sep">/</span>11</span>
+        </footer>
+
+      </div>
+    </article>
+  </div>
+
+  <script>
+    function fit() {
+      const slide = document.querySelector('.slide');
+      const stage = document.querySelector('.carousel-stage');
+      if (!slide || !stage) return;
+      const pad = 48;
+      const sw = (stage.clientWidth  - pad) / 1080;
+      const sh = (stage.clientHeight - pad) / 1350;
+      slide.style.setProperty('--carousel-scale', Math.min(sw, sh, 1));
+    }
+    addEventListener('resize', fit);
+    fit();
+  </script>
+</body>
+</html>

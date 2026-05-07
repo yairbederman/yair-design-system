@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Card</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; background: var(--bg-0); padding: 24px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .idx { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); margin-bottom: 12px; }
+  .idx .n { color: var(--accent); margin-right: 8px; }
+  .ttl { font-family: var(--font-display); font-weight: 500; font-size: 18px; letter-spacing: -0.02em; color: var(--fg-1); margin: 0 0 8px; }
+  .desc { font-family: var(--font-body); font-size: 13px; color: var(--fg-2); line-height: 1.5; margin: 0; }
+</style>
+</head>
+<body>
+<div class="grid">
+  <div class="card card-tick">
+    <div class="idx"><span class="n">01</span>service</div>
+    <h3 class="ttl">agentic feature lifecycle</h3>
+    <p class="desc">Intake → spec → tasks → implementation → QA. Verification gates between every stage.</p>
+  </div>
+  <div class="card card-tick">
+    <div class="idx"><span class="n">02</span>service</div>
+    <h3 class="ttl">spec-to-code acceleration</h3>
+    <p class="desc">Reusable templates with Claude Code &amp; Antigravity. No spec, no code.</p>
+  </div>
+</div>
+</body>
+</html>

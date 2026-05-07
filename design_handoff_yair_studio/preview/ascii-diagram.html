@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ASCII diagram</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; background: var(--bg-0); padding: 18px 24px; }
+  .ascii-diagram { font-size: 12px; line-height: 1.45; }
+  .ascii-diagram .hl { color: var(--accent); }
+</style>
+</head>
+<body>
+<pre class="ascii-diagram">
+┌─ intake ─────┐    ┌─ spec ───────┐    ┌─ tasks ──────┐    ┌─ build ──────┐    ┌─ qa ─────────┐
+│ requirements │ ─▶ │ <span class="hl">validated</span>    │ ─▶ │ decomposed   │ ─▶ │ ai-assisted  │ ─▶ │ verification │
+│ from biz     │    │ no spec→code │    │ jira / linear│    │ claude code  │    │ gates · ✓    │
+└──────────────┘    └──────────────┘    └──────────────┘    └──────────────┘    └──────────────┘
+                          │                     │                   │
+                          └─ human gate ────────┴─ human gate ──────┘
+</pre>
+</body>
+</html>

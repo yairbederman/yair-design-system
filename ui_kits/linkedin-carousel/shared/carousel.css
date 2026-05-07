@@ -1,0 +1,969 @@
+/* ============================================================
+   y[AI]r studio — LinkedIn Carousel shared styles
+   ------------------------------------------------------------
+   Locks the slide canvas to 1080x1350 (LinkedIn portrait) and
+   defines the small set of role classes used by both the
+   English (LTR) and Hebrew (RTL) slide templates.
+
+   Loads on top of /colors_and_type.css — do not redefine tokens.
+   ============================================================ */
+
+/* ---- Canvas ---- */
+.carousel-stage {
+  /* Full-viewport letterbox host. The slide itself is fixed-size; we
+     scale it to fit. JS in each template flips the --carousel-scale
+     variable on load and resize. */
+  width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #050507;
+  padding: 24px;
+}
+
+.slide {
+  /* The fixed-size export surface. Always 1080x1350. */
+  width: 1080px;
+  height: 1350px;
+  position: relative;
+  background: var(--bg-0);
+  color: var(--fg-1);
+  overflow: hidden;
+  transform: scale(var(--carousel-scale, 1));
+  transform-origin: center center;
+  /* Internal margins per HEBREW.md §18.2 — 64 horizontal, 96 vertical. */
+  --pad-x: 64px;
+  --pad-y: 96px;
+  /* Light hairline frame so a slide reads as a "panel" against any host. */
+  outline: 1px solid var(--rule);
+  outline-offset: -1px;
+}
+
+/* RTL slides flip layout direction at the slide root. */
+.slide[dir="rtl"] {
+  direction: rtl;
+}
+
+/* ---- Slide grid ---- */
+/* All three templates share the same 3-row layout:
+   header row · main · footer row. */
+.slide-frame {
+  position: absolute;
+  inset: var(--pad-y) var(--pad-x);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  row-gap: 48px;
+}
+
+/* ---- Header row (eyebrow + section index) ---- */
+.slide-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.slide-eyebrow {
+  font-family: var(--font-mono-en);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--fg-2);
+}
+
+.slide[dir="rtl"] .slide-eyebrow {
+  /* Hebrew eyebrows: small enough that mono is acceptable per HEBREW.md
+     §18.1 (UI label = 14px, same in both languages). Use Hebrew body
+     family if the eyebrow contains Hebrew letters. */
+  font-family: var(--font-body-he);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.slide-eyebrow .dot {
+  color: var(--accent);
+  margin: 0 0.4em;
+}
+
+/* The "01 — series" stamp, mirrored for RTL via flex order. */
+.slide-stamp {
+  font-family: var(--font-mono-en);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--fg-3);
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+.slide-stamp .num { color: var(--accent); }
+
+/* ---- Main slot ---- */
+.slide-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+}
+
+/* Hebrew display headlines — Assistant, scaled per §18.1.
+   Body sizes do NOT downsize. */
+.slide-display {
+  font-family: var(--font-body-en);
+  font-size: 88px;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  color: var(--fg-1);
+  text-wrap: balance;
+  margin: 0;
+}
+
+.slide[dir="rtl"] .slide-display {
+  font-family: var(--font-body-he);
+  font-size: 82px;          /* §18.1 — Hebrew display steps down ~6% */
+  line-height: 1.15;        /* §3 — Hebrew has no descenders */
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+/* Body / lead — IBM/Inter at 28px reads cleanly on a phone scroll. */
+.slide-body {
+  font-family: var(--font-body-en);
+  font-size: 28px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--fg-2);
+  max-width: 880px;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.slide-body + .slide-body {
+  margin-top: 28px;
+}
+
+.slide-body strong {
+  color: var(--fg-1);
+  font-weight: 600;
+}
+
+.slide[dir="rtl"] .slide-body {
+  font-family: var(--font-body-he);
+  font-size: 30px;
+  line-height: 1.55;
+}
+
+/* ---- Footer row ---- */
+.slide-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-mono-en);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+.slide-footer .wordmark-slot {
+  /* Wordmark always Latin, always LTR — even in Hebrew slides. */
+  unicode-bidi: isolate;
+  direction: ltr;
+}
+
+.slide-footer .page-num {
+  font-variant-numeric: tabular-nums;
+  /* Always Latin digits, even in RTL flow per §6 + §18.2. */
+  unicode-bidi: isolate;
+  direction: ltr;
+}
+
+.slide-footer .page-num .now { color: var(--fg-1); }
+.slide-footer .page-num .sep { color: var(--rule-strong); margin: 0 6px; }
+
+/* ---- Cover-slide treatment ---- */
+.slide.is-cover {
+  background:
+    radial-gradient(circle at 18% 8%, rgba(255,75,31,0.08), transparent 50%),
+    var(--bg-0);
+}
+
+.slide.is-cover::before {
+  /* Subtle dot-grid behind the headline. */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--fg-3) 1px, transparent 1.5px);
+  background-size: 32px 32px;
+  opacity: 0.10;
+  pointer-events: none;
+}
+
+.cover-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono-en);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--fg-3);
+  margin-bottom: 32px;
+}
+.slide[dir="rtl"] .cover-kicker {
+  font-family: var(--font-body-he);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.cover-kicker .bar {
+  width: 28px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.cover-display {
+  font-size: 96px;
+  line-height: 1.02;
+}
+.slide[dir="rtl"] .cover-display {
+  font-size: 88px;
+  line-height: 1.12;
+}
+
+/* ---- Content-slide treatment ---- */
+.slide.is-content .slide-main {
+  gap: 40px;
+}
+
+.content-lede {
+  font-family: var(--font-body-en);
+  font-size: 36px;
+  line-height: 1.25;
+  font-weight: 600;
+  color: var(--fg-1);
+  letter-spacing: -0.015em;
+  max-width: 880px;
+  margin: 0;
+}
+.slide[dir="rtl"] .content-lede {
+  font-family: var(--font-body-he);
+  font-size: 36px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+.content-aside {
+  /* Small labelled key on the left in EN, right in HE (auto via dir). */
+  font-family: var(--font-mono-en);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.slide[dir="rtl"] .content-aside {
+  /* Mono is acceptable here — small label, not body. Per task §5: mono
+     OK for technical labels in Hebrew "only if small". */
+  font-size: 12px;
+}
+.content-aside .pip {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+}
+
+/* ---- CTA-slide treatment ---- */
+.slide.is-cta {
+  background:
+    radial-gradient(circle at 80% 90%, rgba(255,75,31,0.10), transparent 55%),
+    var(--bg-0);
+}
+
+.cta-headline {
+  font-size: 84px;
+  line-height: 1.06;
+}
+.slide[dir="rtl"] .cta-headline {
+  font-size: 76px;
+  line-height: 1.18;
+}
+
+.cta-wordmark {
+  /* Big lockup, anchored to the reading-end side. */
+  margin-top: 56px;
+  font-size: 96px;
+  unicode-bidi: isolate;
+  direction: ltr;
+  display: inline-flex;
+}
+
+.cta-callout {
+  font-family: var(--font-mono-en);
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.cta-callout::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+.slide[dir="rtl"] .cta-callout {
+  font-family: var(--font-body-he);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* ---- Optional metadata label (small chip used on content slides) ---- */
+.meta-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  font-family: var(--font-mono-en);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-rule);
+  border-radius: 2px;
+  align-self: flex-start;
+}
+.slide[dir="rtl"] .meta-label {
+  align-self: flex-end;
+  /* Still mono — it is small (11px) per HE rule. */
+}
+
+/* ============================================================
+   Phase B — Expanded carousel templates
+   ------------------------------------------------------------
+   Eight additional reusable slide types added to the original
+   cover / content / cta. All inherit the shared frame, header,
+   and footer; only the .slide-main treatment differs.
+
+   Template roster:
+     .is-claim       big-claim slide (one short line, hero scale)
+     .is-list        list / framework slide (numbered rows)
+     .is-beforeafter before-after slide (two stacked panels)
+     .is-mistake     mistake → correction slide (struck + amended)
+     .is-process     process / workflow slide (horizontal pipeline)
+     .is-case        case-study slide (client + outcomes)
+     .is-metric      metric / proof slide (one giant number)
+     .is-punchline   quote / punchline slide (display quote)
+
+   Hebrew (RTL) inherits via [dir="rtl"] selectors — no separate
+   HE-only classes. Everything mirrors automatically.
+   ============================================================ */
+
+/* ---- Big claim ---- */
+.claim-headline {
+  font-size: 104px;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  max-width: 920px;
+}
+.slide[dir="rtl"] .claim-headline {
+  font-family: var(--font-body-he);
+  font-size: 92px;
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+.claim-underline {
+  display: inline-block;
+  border-bottom: 4px solid var(--accent);
+  padding-bottom: 4px;
+}
+.claim-attribution {
+  margin-top: 56px;
+  font-family: var(--font-mono-en);
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.claim-attribution::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+.slide[dir="rtl"] .claim-attribution {
+  font-family: var(--font-body-he);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* ---- List / framework ---- */
+.list-title {
+  font-family: var(--font-body-en);
+  font-size: 56px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  margin: 0 0 40px;
+  max-width: 880px;
+  color: var(--fg-1);
+}
+.slide[dir="rtl"] .list-title {
+  font-family: var(--font-body-he);
+  font-size: 52px;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  font-weight: 700;
+}
+.list-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--rule);
+}
+.list-rows li {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 24px;
+  align-items: baseline;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.list-rows .n {
+  font-family: var(--font-mono-en);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.list-rows .t {
+  font-family: var(--font-body-en);
+  font-size: 28px;
+  line-height: 1.35;
+  font-weight: 500;
+  color: var(--fg-1);
+}
+.slide[dir="rtl"] .list-rows .t {
+  font-family: var(--font-body-he);
+  font-size: 30px;
+  line-height: 1.45;
+  font-weight: 600;
+}
+.slide[dir="rtl"] .list-rows .n {
+  /* Latin digits, RTL row — flow Latin run as LTR. */
+  unicode-bidi: isolate;
+  direction: ltr;
+  text-align: right;
+}
+
+/* ---- Before / after ---- */
+.ba-stack {
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  gap: 0;
+  align-items: stretch;
+  height: 100%;
+}
+.ba-panel {
+  border: 1px solid var(--rule);
+  background: var(--bg-1);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+}
+.ba-panel.before { border-color: rgba(229, 72, 77, 0.32); }
+.ba-panel.after  { border-color: var(--accent-rule); background: rgba(255, 75, 31, 0.04); }
+.ba-tag {
+  font-family: var(--font-mono-en);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+.ba-panel.before .ba-tag { color: var(--err); }
+.ba-panel.after  .ba-tag { color: var(--accent); }
+.ba-line {
+  font-family: var(--font-body-en);
+  font-size: 32px;
+  line-height: 1.25;
+  font-weight: 500;
+  color: var(--fg-1);
+  margin: 0;
+}
+.slide[dir="rtl"] .ba-line {
+  font-family: var(--font-body-he);
+  font-size: 32px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+.ba-arrow {
+  font-family: var(--font-mono-en);
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 32px;
+}
+.ba-arrow::before,
+.ba-arrow::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--accent-rule);
+}
+.slide[dir="rtl"] .ba-arrow {
+  font-family: var(--body-he, var(--font-body-he));
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* ---- Mistake → correction ---- */
+.mistake-eyebrow {
+  font-family: var(--font-mono-en);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--err);
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.mistake-eyebrow::before {
+  content: "✗";
+  color: var(--err);
+  font-size: 16px;
+}
+.mistake-line {
+  font-family: var(--font-body-en);
+  font-size: 44px;
+  line-height: 1.2;
+  font-weight: 500;
+  color: var(--fg-3);
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: rgba(229, 72, 77, 0.5);
+  margin: 0 0 56px;
+  max-width: 880px;
+}
+.slide[dir="rtl"] .mistake-line {
+  font-family: var(--font-body-he);
+  font-size: 42px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+.correction-eyebrow {
+  font-family: var(--font-mono-en);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.correction-eyebrow::before {
+  content: "→";
+  color: var(--accent);
+  font-size: 18px;
+}
+.slide[dir="rtl"] .correction-eyebrow::before { content: "←"; }
+.correction-line {
+  font-family: var(--font-body-en);
+  font-size: 56px;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  color: var(--fg-1);
+  margin: 0;
+  max-width: 880px;
+}
+.correction-line .hl { color: var(--accent); }
+.slide[dir="rtl"] .correction-line {
+  font-family: var(--font-body-he);
+  font-size: 52px;
+  line-height: 1.22;
+  letter-spacing: -0.005em;
+  font-weight: 700;
+}
+.slide[dir="rtl"] .mistake-eyebrow,
+.slide[dir="rtl"] .correction-eyebrow {
+  font-family: var(--font-body-he);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* ---- Process / workflow ---- */
+.process-title {
+  font-family: var(--font-body-en);
+  font-size: 48px;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  margin: 0 0 56px;
+  max-width: 880px;
+  color: var(--fg-1);
+}
+.slide[dir="rtl"] .process-title {
+  font-family: var(--font-body-he);
+  font-size: 46px;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+  font-weight: 700;
+}
+.process-pipeline {
+  display: grid;
+  grid-auto-flow: row;
+  gap: 16px;
+}
+.process-step {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 20px;
+  background: var(--bg-1);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+}
+.slide[dir="rtl"] .process-step {
+  border-left: 1px solid var(--rule);
+  border-right: 3px solid var(--accent);
+}
+.process-step .num {
+  font-family: var(--font-mono-en);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  unicode-bidi: isolate;
+  direction: ltr;
+}
+.process-step .label {
+  font-family: var(--font-body-en);
+  font-size: 24px;
+  line-height: 1.3;
+  font-weight: 500;
+  color: var(--fg-1);
+}
+.slide[dir="rtl"] .process-step .label {
+  font-family: var(--font-body-he);
+  font-size: 26px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+.process-step .gate {
+  font-family: var(--font-mono-en);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  border: 1px solid var(--rule-strong);
+  padding: 4px 8px;
+  white-space: nowrap;
+}
+
+/* ---- Case study ---- */
+.case-client {
+  font-family: var(--font-mono-en);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.case-client .pip { width: 6px; height: 6px; background: var(--accent); }
+.case-headline {
+  font-family: var(--font-body-en);
+  font-size: 56px;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  color: var(--fg-1);
+  margin: 0 0 40px;
+  max-width: 880px;
+}
+.slide[dir="rtl"] .case-headline {
+  font-family: var(--font-body-he);
+  font-size: 52px;
+  line-height: 1.22;
+  letter-spacing: -0.005em;
+  font-weight: 700;
+}
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  border-top: 1px solid var(--rule);
+  padding-top: 32px;
+}
+.case-fact .k {
+  font-family: var(--font-mono-en);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin-bottom: 8px;
+}
+.case-fact .v {
+  font-family: var(--font-body-en);
+  font-size: 24px;
+  line-height: 1.3;
+  font-weight: 500;
+  color: var(--fg-1);
+}
+.slide[dir="rtl"] .case-fact .v {
+  font-family: var(--font-body-he);
+  font-size: 26px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+.case-outcome {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--rule);
+  padding-top: 28px;
+  margin-top: 8px;
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+}
+.case-outcome .num {
+  font-family: var(--font-mono-en);
+  font-size: 88px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  unicode-bidi: isolate;
+  direction: ltr;
+}
+.case-outcome .label {
+  font-family: var(--font-body-en);
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--fg-2);
+  font-weight: 500;
+  max-width: 420px;
+}
+.slide[dir="rtl"] .case-outcome .label {
+  font-family: var(--font-body-he);
+  font-size: 24px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+/* ---- Metric / proof ---- */
+.metric-eyebrow {
+  font-family: var(--font-mono-en);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin-bottom: 24px;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+}
+.metric-eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+.slide[dir="rtl"] .metric-eyebrow {
+  font-family: var(--font-body-he);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.metric-hero {
+  font-family: var(--font-mono-en);
+  font-size: 280px;
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  margin: 0;
+  unicode-bidi: isolate;
+  direction: ltr;
+}
+.metric-hero .unit {
+  font-size: 0.5em;
+  color: var(--fg-1);
+  letter-spacing: -0.04em;
+  margin-left: 0.04em;
+}
+.metric-caption {
+  font-family: var(--font-body-en);
+  font-size: 36px;
+  line-height: 1.25;
+  font-weight: 500;
+  color: var(--fg-1);
+  margin: 32px 0 0;
+  max-width: 880px;
+}
+.slide[dir="rtl"] .metric-caption {
+  font-family: var(--font-body-he);
+  font-size: 36px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+.metric-context {
+  font-family: var(--font-mono-en);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--fg-2);
+  margin-top: 18px;
+  display: inline-flex;
+  gap: 12px;
+}
+.metric-context .ba {
+  font-variant-numeric: tabular-nums;
+  unicode-bidi: isolate;
+  direction: ltr;
+}
+
+/* ---- Quote / punchline ---- */
+.punchline-quote {
+  font-family: var(--font-body-en);
+  font-size: 76px;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  color: var(--fg-1);
+  margin: 0 0 48px;
+  max-width: 920px;
+}
+.punchline-quote .hl { color: var(--accent); }
+.punchline-quote .mark {
+  color: var(--accent);
+  font-weight: 700;
+}
+.slide[dir="rtl"] .punchline-quote {
+  font-family: var(--font-body-he);
+  font-size: 70px;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  font-weight: 700;
+}
+.punchline-cite {
+  font-family: var(--font-mono-en);
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  font-style: normal;
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+}
+.punchline-cite::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+.slide[dir="rtl"] .punchline-cite {
+  font-family: var(--font-body-he);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* ---- Hairline corner ticks on cover/CTA panels (signature device) ---- */
+.slide.is-cover::after,
+.slide.is-cta::after {
+  content: "";
+  position: absolute;
+  inset: var(--pad-y) var(--pad-x);
+  border: 1px solid transparent;
+  pointer-events: none;
+  /* Four corner ticks via background-image */
+  background:
+    linear-gradient(to right, var(--rule-strong) 24px, transparent 24px) top left  / 100% 1px no-repeat,
+    linear-gradient(to right, var(--rule-strong) 24px, transparent 24px) top right / 100% 1px no-repeat,
+    linear-gradient(to bottom, var(--rule-strong) 24px, transparent 24px) top left  / 1px 100% no-repeat,
+    linear-gradient(to bottom, var(--rule-strong) 24px, transparent 24px) top right / 1px 100% no-repeat;
+  display: none; /* leave off by default — opt-in if a slide wants it */
+}
+
+/* ============================================================
+   RTL small-label font overrides
+   ------------------------------------------------------------
+   Hebrew small-label surfaces inherit Geist Mono (--font-mono-en)
+   from the base rules above. When the label actually contains
+   Hebrew characters, that's wrong — Geist Mono has no Hebrew
+   glyphs, so the browser falls back inconsistently.
+
+   These overrides force Hebrew small-label surfaces onto the
+   canonical Hebrew font system per HEBREW.md §18.1:
+
+     - Genuinely small (≤12 px) technical / metadata labels
+       use --font-mono-he (IBM Plex Mono w/ Hebrew coverage).
+     - Anything used as a near-body label uses --font-body-he.
+
+   Numeric-only / Latin-only runs inside these surfaces stay
+   LTR via existing unicode-bidi isolation; they remain readable
+   and untouched. Visual layout is unchanged — only font-family
+   is swapped.
+   ============================================================ */
+
+/* before/after tag — small uppercase metadata label (12px).
+   Hebrew copy ("לפני" / "אחרי") needs a Hebrew-capable face.
+   Mono is fine here per the "small technical label" rule. */
+.slide[dir="rtl"] .ba-tag {
+  font-family: var(--font-mono-he);
+}
+
+/* case-study client line — 12px label that mixes Hebrew + Latin
+   ("מקרה · lognet systems"). The Latin run is already isolated
+   via dir="ltr" on the inner span, so swapping the outer family
+   to mono-he is safe and keeps the technical-metadata feel. */
+.slide[dir="rtl"] .case-client {
+  font-family: var(--font-mono-he);
+}
+
+/* case-fact key — 11px uppercase metadata key ("היקף", "סטאק").
+   Pure Hebrew, genuinely small + technical → mono-he. */
+.slide[dir="rtl"] .case-fact .k {
+  font-family: var(--font-mono-he);
+}
+
+/* process-step gate badge — 11px uppercase chip. Most gates are
+   Latin technical tokens (scoped, verified, human gate); one HE
+   template uses "עלה לאוויר". Mono-he carries Hebrew glyphs and
+   keeps Latin tokens looking right too. */
+.slide[dir="rtl"] .process-step .gate {
+  font-family: var(--font-mono-he);
+}
+

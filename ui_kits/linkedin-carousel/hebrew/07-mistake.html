@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <title>HE · 07 mistake — y[AI]r studio carousel</title>
+  <link rel="stylesheet" href="../../../colors_and_type.css">
+  <link rel="stylesheet" href="../../linkedin-carousel/shared/carousel.css">
+</head>
+<body>
+  <div class="carousel-stage">
+    <article class="slide is-mistake" dir="rtl" data-screen-label="HE · 07 Mistake · correction">
+      <!-- HE: pure mirror — vertically stacked mistake-then-correction has no horizontal flow to flip. -->
+      <div class="slide-frame">
+
+        <header class="slide-header">
+          <span class="slide-eyebrow">שטח <span class="dot">·</span> AI בפרודקשן</span>
+          <span class="slide-stamp" dir="ltr"><span class="num">07</span> / 11</span>
+        </header>
+
+        <main class="slide-main">
+          <span class="mistake-eyebrow">טעות נפוצה</span>
+          <p class="mistake-line">"בואו נעלה לאוויר את הפרוטוטייפ ונחזק אחר כך."</p>
+          <span class="correction-eyebrow">מה לעשות במקום</span>
+          <p class="correction-line">מסמך האפיון הוא המוצר — <span class="hl">הקוד הוא תוצר לוואי</span>.</p>
+        </main>
+
+        <footer class="slide-footer">
+          <span class="wordmark-slot" dir="ltr">
+            <img class="footer-logo" src="../../../assets/wordmark-compact.svg" alt="y[AI]r studio" style="height:24px;width:auto;display:block" />
+          </span>
+          <span class="page-num" dir="ltr"><span class="now">07</span><span class="sep">/</span>11</span>
+        </footer>
+
+      </div>
+    </article>
+  </div>
+
+  <script>
+    function fit() {
+      const slide = document.querySelector('.slide');
+      const stage = document.querySelector('.carousel-stage');
+      if (!slide || !stage) return;
+      const pad = 48;
+      const sw = (stage.clientWidth  - pad) / 1080;
+      const sh = (stage.clientHeight - pad) / 1350;
+      slide.style.setProperty('--carousel-scale', Math.min(sw, sh, 1));
+    }
+    addEventListener('resize', fit);
+    fit();
+  </script>
+</body>
+</html>

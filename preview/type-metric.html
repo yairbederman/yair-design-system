@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Type — Metric</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; background: var(--bg-0); padding: 24px; }
+  .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .cell { border-left: 1px solid var(--rule); padding-left: 16px; }
+  .num { font-family: var(--font-display); font-weight: 500; font-size: 56px; letter-spacing: -0.04em; line-height: 1; color: var(--fg-1); font-variant-numeric: tabular-nums; }
+  .num .delta { color: var(--accent); }
+  .lab { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); margin-top: 10px; }
+  .ba { font-family: var(--font-mono); font-size: 11px; color: var(--fg-2); margin-top: 4px; letter-spacing: 0.02em; }
+</style>
+</head>
+<body>
+<div class="row">
+  <div class="cell"><div class="num"><span class="delta">−80</span>%</div><div class="lab">spec rework</div><div class="ba">50% → 10%</div></div>
+  <div class="cell"><div class="num"><span class="delta">+25</span>%</div><div class="lab">throughput</div><div class="ba">AI-assisted dev</div></div>
+  <div class="cell"><div class="num"><span class="delta">−40</span>%</div><div class="lab">prod incidents</div><div class="ba">via ci/cd gates</div></div>
+  <div class="cell"><div class="num"><span class="delta">+70</span>%</div><div class="lab">predictability</div><div class="ba">plan vs. actual</div></div>
+</div>
+</body>
+</html>

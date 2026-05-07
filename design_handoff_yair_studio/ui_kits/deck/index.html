@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>y[AI]r studio · pitch deck</title>
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="stylesheet" href="slides.css">
+<script src="deck-stage.js"></script>
+</head>
+<body>
+
+<deck-stage>
+
+  <!-- 01 · Title -->
+  <section class="slide s-title" data-screen-label="01 Title">
+    <div class="dot-grid"></div>
+    <div class="slide-stamp">
+      <span class="wordmark stamp-mark" aria-label="y[AI]r studio"><span class="wordmark-y">y</span><span class="wordmark-bracket">[</span><span class="wordmark-ai">AI</span><span class="wordmark-bracket">]</span><span class="wordmark-r">r</span></span>
+      <span>independent ai systems · 2026</span>
+    </div>
+    <div class="title-mark">
+      <span class="wordmark-group wordmark-stack hero-mark" aria-label="y[AI]r studio">
+        <span class="wordmark"><span class="wordmark-y">y</span><span class="wordmark-bracket">[</span><span class="wordmark-ai">AI</span><span class="wordmark-bracket">]</span><span class="wordmark-r">r</span></span>
+        <span class="wordmark-studio">studio</span>
+      </span>
+    </div>
+    <div class="tag">ship ai systems that survive contact with production.<br/>verification gates. human-in-the-loop. no demos.</div>
+  </section>
+
+  <!-- 02 · Section divider -->
+  <section class="slide s-section" data-screen-label="02 Section · the problem">
+    <div class="slide-stamp">
+      <span class="wordmark stamp-mark" aria-label="y[AI]r studio"><span class="wordmark-y">y</span><span class="wordmark-bracket">[</span><span class="wordmark-ai">AI</span><span class="wordmark-bracket">]</span><span class="wordmark-r">r</span></span>
+      <span>02 / 08</span>
+    </div>
+    <div class="num">01 — the problem</div>
+    <h2>most ai pilots stay pilots.</h2>
+  </section>
+
+  <!-- 03 · Comparison -->
+  <section class="slide s-compare" data-screen-label="03 Comparison · demo vs prod">
+    <div class="slide-stamp">
+      <span class="wordmark stamp-mark" aria-label="y[AI]r studio"><span class="wordmark-y">y</span><span class="wordmark-bracket">[</span><span class="wordmark-ai">AI</span><span class="wordmark-bracket">]</span><span class="wordmark-r">r</span></span>
+      <span>03 / 08</span>
+    </div>
+    <h2>demos vs. production. a checklist.</h2>
+    <div class="cols">
+      <div class="col bad">
+        <h3>what most teams ship</h3>
+        <ul>
+          <li>happy-path prompt that worked once</li>
+          <li>no spec, no acceptance criteria</li>
+          <li>silent failures, no error budget</li>
+          <li>no human gate before customer impact</li>
+          <li>"we'll harden it next sprint"</li>
+        </ul>
+      </div>
+      <div class="col good">
+        <h3>what we ship</h3>
+        <ul>
+          <li>validated spec before any code</li>
+          <li>verification harness with test cases</li>
+          <li>structured errors, retry &amp; fallback</li>
+          <li>checkpoints for human approval</li>
+          <li>shipped to a small cohort, then scaled</li>
+        </ul>
+      </div>
+    </div>
+    <div class="slide-foot"><span>03 / 08</span><span>fig 01 — production readiness</span></div>
+  </section>
+
+  <!-- 04 · Approach diagram -->
+  <section class="slide s-diagram" data-screen-label="04 Diagram · the pipeline">
+    <div class="slide-stamp">
+      <span class="wordmark stamp-mark" aria-label="y[AI]r studio"><span class="wordmark-y">y</span><span class="wordmark-bracket">[</span><span class="wordmark-ai">AI</span><span class="wordmark-bracket">]</span><span class="wordmark-r">r</span></span>
+      <span>04 / 08</span>
+    </div>
+    <h2>the agentic feature lifecycle.</h2>
+<pre>┌─ intake ─────┐    ┌─ spec ───────┐    ┌─ tasks ──────┐    ┌─ build ──────┐    ┌─ qa ─────────┐
+│ requirements │ ─▶ │ <span class="hl">validated</span>    │ ─▶ │ decomposed   │ ─▶ │ ai-assisted  │ ─▶ │ verification │
+│ from biz     │    │ no spec→code │    │ jira / linear│    │ claude code  │    │ gates · ✓    │
+└──────────────┘    └──────────────┘    └──────────────┘    └──────────────┘    └──────────────┘
+                          │                     │                   │
+                          └─ <span class="hl">human gate</span> ───────┴─ <span class="hl">human gate</span> ─────┘</pre>
+    <div class="slide-foot"><span>04 / 08</span><span>fig 02 — every arrow is a gate</span></div>
+  </section>
+
+  <!-- 05 · Metrics -->
+  <section class="slide s-metrics" data-screen-label="05 Metrics · outcomes">
+    <div class="slide-stamp">
+      <span class="wordmark stamp-mark" aria-label="y[AI]r studio"><span class="wordmark-y">y</span><span class="wordmark-bracket">[</span><span class="wordmark-ai">AI</span><span class="wordmark-bracket">]</span><span class="wordmark-r">r</span></span>
+      <span>05 / 08</span>
+    </div>
+    <h2>what changes when you run it.</h2>
+    <div class="grid">
+      <div class="cell"><div class="num"><span class="delta">−80</span>%</div><div class="lab">spec rework</div><div class="ba">50% → 10%</div></div>
+      <div class="cell"><div class="num"><span class="delta">+25</span>%</div><div class="lab">throughput</div><div class="ba">ai-assisted dev</div></div>
+      <div class="cell"><div class="num"><span class="delta">−40</span>%</div><div class="lab">prod incidents</div><div class="ba">via ci/cd gates</div></div>
+      <div class="cell"><div class="num"><span class="delta">+70</span>%</div><div class="lab">predictability</div><div class="ba">plan vs. actual</div></div>
+    </div>
+    <div class="slide-foot"><span>05 / 08</span><span>lognet systems · q3 2025 → q1 2026</span></div>
+  </section>
+
+  <!-- 06 · Big quote -->
+  <section class="slide s-quote" data-screen-label="06 Quote">
+    <div class="slide-stamp">
+      <span class="wordmark stamp-mark" aria-label="y[AI]r studio"><span class="wordmark-y">y</span><span class="wordmark-bracket">[</span><span class="wordmark-ai">AI</span><span class="wordmark-bracket">]</span><span class="wordmark-r">r</span></span>
+      <span>06 / 08</span>
+    </div>
+    <blockquote>"ai isn't coming &mdash; it's <span class="hl">here</span>. most teams are still experimenting; we ship."</blockquote>
+    <cite>— yair · founder</cite>
+    <div class="slide-foot"><span>06 / 08</span><span>positioning</span></div>
+  </section>
+
+  <!-- 07 · Content / engagement model -->
+  <section class="slide s-content" data-screen-label="07 Engagement model">
+    <div class="slide-stamp">
+      <span class="wordmark stamp-mark" aria-label="y[AI]r studio"><span class="wordmark-y">y</span><span class="wordmark-bracket">[</span><span class="wordmark-ai">AI</span><span class="wordmark-bracket">]</span><span class="wordmark-r">r</span></span>
+      <span>07 / 08</span>
+    </div>
+    <h2>how we work together.</h2>
+    <div class="body">
+      <div>
+        <p class="lead">A 6-week engagement, fixed-scope.</p>
+        <p>Week 1–2: audit existing pipeline, validate one feature spec end-to-end. Week 3–4: implement the verification harness on a real feature. Week 5–6: ship to production with the team driving, me reviewing.</p>
+      </div>
+      <div>
+        <p class="lead">You keep everything.</p>
+        <p>Templates, prompts, gates, dashboards — it's all in your repo on day one. I'm a forcing function, not a dependency. By week six your team should be running this without me.</p>
+      </div>
+    </div>
+    <div class="slide-foot"><span>07 / 08</span><span>standard engagement</span></div>
+  </section>
+
+  <!-- 08 · Closing -->
+  <section class="slide s-close" data-screen-label="08 Close">
+    <div class="slide-stamp">
+      <span class="wordmark stamp-mark" aria-label="y[AI]r studio"><span class="wordmark-y">y</span><span class="wordmark-bracket">[</span><span class="wordmark-ai">AI</span><span class="wordmark-bracket">]</span><span class="wordmark-r">r</span></span>
+      <span>08 / 08</span>
+    </div>
+    <h2>let's <span style="color:var(--accent)">ship</span><br/>something real.</h2>
+    <div class="meta">
+      <div><div class="k">email</div><div class="v">hi@yair.studio</div></div>
+      <div><div class="k">linkedin</div><div class="v">/in/yair</div></div>
+      <div><div class="k">based</div><div class="v">tel aviv · remote</div></div>
+    </div>
+  </section>
+
+</deck-stage>
+
+</body>
+</html>

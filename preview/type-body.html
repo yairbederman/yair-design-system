@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Type — Body</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; background: var(--bg-0); padding: 24px; }
+  .grid { display: grid; grid-template-columns: 130px 1fr; gap: 12px 24px; align-items: baseline; }
+  .meta { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); }
+  .lead-ex { font-family: var(--font-body); font-size: 21px; color: var(--fg-2); line-height: 1.3; font-weight: 400; }
+  .body-ex { font-family: var(--font-body); font-size: 16px; color: var(--fg-1); line-height: 1.55; max-width: 520px; }
+  .small-ex { font-family: var(--font-body); font-size: 14px; color: var(--fg-2); line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="grid">
+  <span class="meta">lead · 21/1.3</span>
+  <span class="lead-ex">I help engineering teams stop experimenting and start shipping.</span>
+  <span class="meta">body · 16/1.55</span>
+  <span class="body-ex">Every system includes verification gates, human-in-the-loop checkpoints, and production-grade error handling. 20 years of leading R&amp;D taught me what ships and what stays a demo.</span>
+  <span class="meta">small · 14/1.5</span>
+  <span class="small-ex">Reduced spec-related rework by 80% (50% → 10%) through a "no spec, no code" policy.</span>
+</div>
+</body>
+</html>

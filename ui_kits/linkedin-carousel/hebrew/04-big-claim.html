@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <title>HE · 04 big-claim — y[AI]r studio carousel</title>
+  <link rel="stylesheet" href="../../../colors_and_type.css">
+  <link rel="stylesheet" href="../../linkedin-carousel/shared/carousel.css">
+</head>
+<body>
+  <div class="carousel-stage">
+    <article class="slide is-claim" dir="rtl" data-screen-label="HE · 04 Big claim">
+      <!-- HE: pure mirror of EN — single centered headline, no directional layout to invert beyond text flow. -->
+      <div class="slide-frame">
+
+        <header class="slide-header">
+          <span class="slide-eyebrow">שטח <span class="dot">·</span> AI בפרודקשן</span>
+          <span class="slide-stamp" dir="ltr"><span class="num">04</span> / 11</span>
+        </header>
+
+        <main class="slide-main">
+          <h1 class="slide-display claim-headline">
+            רוב פרויקטי&nbsp;<span class="ltr-inline" dir="ltr">[<span class="wordmark-ai" style="font-weight:700">AI</span>]</span> לא נכשלים במודל.<br>
+            הם נכשלים ב<span class="claim-underline">תהליך</span>.
+          </h1>
+          <span class="claim-attribution"><span dir="ltr">y[AI]r studio</span> · הערת שטח 04</span>
+        </main>
+
+        <footer class="slide-footer">
+          <span class="wordmark-slot" dir="ltr">
+            <img class="footer-logo" src="../../../assets/wordmark-compact.svg" alt="y[AI]r studio" style="height:24px;width:auto;display:block" />
+          </span>
+          <span class="page-num" dir="ltr"><span class="now">04</span><span class="sep">/</span>11</span>
+        </footer>
+
+      </div>
+    </article>
+  </div>
+
+  <script>
+    function fit() {
+      const slide = document.querySelector('.slide');
+      const stage = document.querySelector('.carousel-stage');
+      if (!slide || !stage) return;
+      const pad = 48;
+      const sw = (stage.clientWidth  - pad) / 1080;
+      const sh = (stage.clientHeight - pad) / 1350;
+      slide.style.setProperty('--carousel-scale', Math.min(sw, sh, 1));
+    }
+    addEventListener('resize', fit);
+    fit();
+  </script>
+</body>
+</html>

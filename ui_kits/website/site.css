@@ -1,0 +1,400 @@
+/* y[AI]r studio website */
+.site-shell { min-height: 100vh; background: var(--bg-0); color: var(--fg-1); }
+
+/* Skip link — first focusable element. Hidden offscreen until focused. */
+.skip-link {
+  position: absolute;
+  inset-inline-start: var(--s-4);
+  top: -100px;
+  z-index: 100;
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-md);
+  background: var(--bg-1);
+  color: var(--fg-1);
+  border: 1px solid var(--accent);
+  border-radius: var(--r-md);
+  text-decoration: none;
+  transition: top var(--dur) var(--ease);
+}
+.skip-link:focus { top: var(--s-4); outline: none; }
+
+/* Nav ------------------------------------------------------- */
+.site-nav {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; gap: 32px;
+  padding: 18px 32px;
+  background: rgba(10,10,11,0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.brand { display: inline-flex; align-items: baseline; gap: 10px; text-decoration: none; }
+.brand .wordmark, .brand .wordmark-group { font-size: 22px; }
+.brand-logo { height: 32px; width: auto; display: block; }
+.brand-suffix { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); }
+.nav-links { display: flex; gap: 24px; margin-left: auto; }
+.nav-links a { font-family: var(--font-mono); font-size: 13px; color: var(--fg-2); text-decoration: none; }
+.nav-links a:hover { color: var(--fg-1); }
+.nav-cta { padding: 8px 14px; font-size: 13px; }
+
+/* Layout --------------------------------------------------- */
+.section { padding: 96px 32px; max-width: 1200px; margin: 0 auto; }
+.section-head { display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; max-width: 820px; }
+.section-title { font-family: var(--font-display); font-size: 48px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.05; color: var(--fg-1); margin: 0; text-wrap: balance; }
+.section-lead { font-family: var(--font-body); font-size: 18px; color: var(--fg-2); line-height: 1.5; max-width: 620px; margin: 0; }
+
+/* Hero ----------------------------------------------------- */
+.hero { position: relative; padding: 120px 32px 96px; max-width: 1200px; margin: 0 auto; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; pointer-events: none; }
+.hero-inner { position: relative; }
+.hero-mark { display: inline-flex; flex-direction: column; align-items: flex-start; margin: 32px 0 40px; }
+.hero-logo { height: 140px; width: auto; display: block; }
+.hero-wordmark { font-size: 96px; }
+.hero-mark .wordmark-studio { font-size: 13px; letter-spacing: 0.7em; padding-left: 1.6em; padding-right: 0; margin-top: 14px; }
+.hero-title { font-family: var(--font-display); font-weight: 500; font-size: 64px; line-height: 1.0; letter-spacing: -0.04em; color: var(--fg-1); margin: 0 0 28px; max-width: 980px; text-wrap: balance; }
+.hero-title .hl { color: var(--accent); }
+.hero-title .cursor { color: var(--accent); animation: blink 1s steps(2) infinite; font-weight: 400; }
+@keyframes blink { 50% { opacity: 0; } }
+.hero-lead { font-family: var(--font-body); font-size: 21px; line-height: 1.4; color: var(--fg-2); max-width: 720px; margin: 0 0 32px; }
+.hero-cta { display: flex; gap: 12px; margin-bottom: 64px; }
+.hero-meta { display: flex; gap: 48px; padding-top: 24px; border-top: 1px solid var(--rule); }
+.hero-meta > div { display: flex; flex-direction: column; gap: 4px; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; }
+.hero-meta .k { color: var(--fg-3); }
+.hero-meta .v { color: var(--fg-1); }
+
+/* Services ------------------------------------------------- */
+.services { padding: 96px 32px; max-width: 1200px; margin: 0 auto; }
+.service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.service-card { padding: 32px; min-height: 220px; display: flex; flex-direction: column; gap: 12px; }
+.service-num { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); }
+.service-t { font-family: var(--font-display); font-size: 24px; font-weight: 500; letter-spacing: -0.02em; color: var(--fg-1); margin: 0; }
+.service-d { font-family: var(--font-body); font-size: 15px; line-height: 1.55; color: var(--fg-2); margin: 0; flex: 1; }
+.service-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* Proof ---------------------------------------------------- */
+.proof { padding: 96px 32px; max-width: 1200px; margin: 0 auto; }
+.proof-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.proof-card { padding: 28px; display: flex; flex-direction: column; gap: 14px; }
+.proof-head { display: flex; align-items: baseline; gap: 12px; }
+.proof-num { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); }
+.proof-kind { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); }
+.proof-title { font-family: var(--font-display); font-size: 21px; font-weight: 500; letter-spacing: -0.02em; color: var(--fg-1); margin: 0; line-height: 1.15; }
+.proof-body { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--fg-2); margin: 0; flex: 1; }
+.proof-metric { padding-top: 14px; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 4px; }
+.proof-metric-v { font-family: var(--font-mono); font-size: 14px; font-weight: 500; color: var(--accent); letter-spacing: -0.01em; }
+.proof-metric-l { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); }
+.mono-inline { font-family: var(--font-mono); font-size: 0.86em; color: var(--fg-1); padding: 1px 6px; border: 1px solid var(--rule); border-radius: 2px; background: var(--bg-1); white-space: nowrap; }
+
+/* Tools ---------------------------------------------------- */
+.tools { padding: 96px 32px; max-width: 1200px; margin: 0 auto; }
+.tools-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; border-top: 1px solid var(--rule); border-inline-start: 1px solid var(--rule); }
+.tools-item { font-family: var(--font-mono); font-size: 13px; color: var(--fg-1); padding: 18px 22px; border-inline-end: 1px solid var(--rule); border-bottom: 1px solid var(--rule); flex: 1 1 200px; min-width: 180px; letter-spacing: 0.02em; }
+
+/* Inline brand-cased token inside lowercased button labels.
+   The `.btn` class lowercases everything, but per brand rules `AI` must
+   stay uppercase in public copy. Wrap "AI" in <span class="btn-cap">AI</span>. */
+.btn-cap { text-transform: none; }
+
+/* Approach ------------------------------------------------- */
+.approach { padding: 96px 32px; max-width: 1200px; margin: 0 auto; }
+.approach .ascii-diagram { font-size: 13px; }
+.approach-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px; }
+.metric-cell { border-left: 1px solid var(--rule); padding-left: 20px; }
+.metric-cell .metric { font-family: var(--font-display); font-size: 56px; font-weight: 500; letter-spacing: -0.04em; line-height: 1; color: var(--fg-1); font-variant-numeric: tabular-nums; }
+.metric-cell .metric .delta { color: var(--accent); }
+.metric-cell .lab { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); margin-top: 12px; }
+.metric-cell .ba { font-family: var(--font-mono); font-size: 12px; color: var(--fg-2); margin-top: 4px; }
+
+/* Work ----------------------------------------------------- */
+.work { padding: 96px 32px; max-width: 1200px; margin: 0 auto; }
+.work-list { border-top: 1px solid var(--rule); }
+.work-row { display: grid; grid-template-columns: 60px 220px 1fr 140px; gap: 24px; padding: 32px 0; border-bottom: 1px solid var(--rule); align-items: start; }
+.work-num { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); padding-top: 6px; }
+.work-client { font-family: var(--font-display); font-size: 17px; font-weight: 500; color: var(--fg-1); letter-spacing: -0.01em; }
+.work-role { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); margin-top: 4px; }
+.work-headline { font-family: var(--font-display); font-size: 21px; font-weight: 500; letter-spacing: -0.02em; color: var(--fg-1); margin: 0 0 12px; }
+.work-bullets { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.work-bullets li { font-family: var(--font-body); font-size: 14px; color: var(--fg-2); line-height: 1.5; padding-left: 16px; position: relative; }
+.work-bullets li::before { content: "─"; position: absolute; left: 0; color: var(--fg-3); }
+.work-status { display: flex; justify-content: flex-end; padding-top: 6px; }
+
+/* Contact -------------------------------------------------- */
+.contact { padding: 96px 32px; max-width: 1200px; margin: 0 auto; }
+.contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 720px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field.full { grid-column: 1 / -1; }
+.field select.input { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--fg-2) 50%), linear-gradient(135deg, var(--fg-2) 50%, transparent 50%); background-position: calc(100% - 18px) 14px, calc(100% - 13px) 14px; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; padding-right: 36px; }
+.submit-row { flex-direction: row; align-items: center; gap: 16px; margin-top: 8px; }
+
+/* Footer --------------------------------------------------- */
+.site-footer { display: flex; align-items: center; justify-content: space-between; padding: 32px; max-width: 1200px; margin: 64px auto 0; border-top: 1px solid var(--rule); }
+.footer-l { display: flex; align-items: baseline; gap: 16px; }
+.footer-l .wordmark, .footer-l .wordmark-group { font-size: 18px; }
+.footer-logo { height: 28px; width: auto; display: block; align-self: center; }
+.footer-tag { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); }
+.footer-r { display: flex; gap: 20px; }
+.footer-r a { font-family: var(--font-mono); font-size: 12px; color: var(--fg-2); }
+.footer-r a:hover { color: var(--fg-1); }
+
+/* ============================================================
+   Phase 5 — Responsive breakpoints
+   ------------------------------------------------------------
+   Mobile:  ≤767px         single-column, stacked nav
+   Tablet:  768–1023px     2-col services, condensed metrics
+   Desktop: ≥1024px        full layout (defaults above)
+   ============================================================ */
+
+/* Tap targets — every interactive element must be ≥44px tall on touch.
+   Keep the visual padding the same; min-height enforces the floor. */
+.btn,
+.nav-links a,
+.footer-r a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Tablet ---------------------------------------------------- */
+@media (max-width: 1023px) {
+  .section,
+  .services,
+  .approach,
+  .work,
+  .contact { padding-left: 24px; padding-right: 24px; }
+
+  .hero { padding: 96px 24px 72px; }
+  .hero-wordmark { font-size: 80px; }
+  .hero-title { font-size: 52px; max-width: 100%; }
+  .hero-lead { font-size: 19px; }
+
+  .section-title { font-size: 40px; }
+
+  .approach-metrics { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
+
+  .proof-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .proof-card { padding: 24px; }
+
+  /* Work rows: drop the role column into a stacked left-side block */
+  .work-row {
+    grid-template-columns: 40px 1fr 120px;
+    gap: 16px;
+  }
+  .work-meta { grid-column: 2; }
+  .work-body { grid-column: 1 / -1; padding-top: 8px; }
+  .work-status { grid-column: 3; grid-row: 1; }
+}
+
+/* Mobile ---------------------------------------------------- */
+@media (max-width: 767px) {
+  /* Nav — wordmark left, CTA right, links wrap to a second row */
+  .site-nav {
+    flex-wrap: wrap;
+    gap: 12px 16px;
+    padding: 14px 20px;
+  }
+  .brand .wordmark,
+  .brand .wordmark-group { font-size: 18px; }
+  .brand-logo { height: 26px; }
+  .nav-links {
+    order: 3;
+    width: 100%;
+    margin: 0;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding-top: 8px;
+    border-top: 1px solid var(--rule);
+  }
+  .nav-cta { margin-inline-start: auto; }
+
+  /* Sections — generous side padding, less vertical */
+  .section,
+  .services,
+  .approach,
+  .work,
+  .contact { padding: 64px 20px; }
+
+  /* Hero — keep readable, never let title overflow */
+  .hero { padding: 56px 20px 56px; }
+  .hero-mark { margin: 16px 0 28px; }
+  .hero-logo { height: 96px; }
+  .hero-wordmark { font-size: 56px; }
+  .hero-mark .wordmark-studio { font-size: 11px; letter-spacing: 0.5em; padding-inline-start: 1.2em; }
+  .hero-title { font-size: 36px; line-height: 1.05; letter-spacing: -0.03em; }
+  .hero-lead { font-size: 17px; }
+  .hero-cta { flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+  .hero-cta .btn { flex: 1 1 auto; justify-content: center; }
+  .hero-meta {
+    flex-wrap: wrap;
+    gap: 20px 32px;
+    padding-top: 20px;
+  }
+
+  /* Section heads */
+  .section-head { margin-bottom: 32px; gap: 12px; }
+  .section-title { font-size: 32px; line-height: 1.08; }
+  .section-lead { font-size: 16px; }
+
+  /* Services — single column */
+  .service-grid { grid-template-columns: 1fr; gap: 12px; }
+  .service-card { padding: 24px; min-height: 0; }
+  .service-t { font-size: 21px; }
+
+  /* Proof — single column */
+  .proof-grid { grid-template-columns: 1fr; gap: 12px; }
+  .proof-card { padding: 22px; }
+  .proof-title { font-size: 19px; }
+
+  /* Tools — single column */
+  .tools-item { padding: 14px 18px; flex: 1 1 100%; min-width: 0; }
+
+  /* Approach — diagram scrolls horizontally, metrics stack 2x2 */
+  .approach .ascii-diagram { font-size: 11px; padding: 16px; }
+  .approach-metrics {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 20px;
+    margin-top: 32px;
+  }
+  .metric-cell { padding-inline-start: 14px; }
+  .metric-cell .metric { font-size: 40px; }
+
+  /* Work — single column rows */
+  .work-row {
+    grid-template-columns: 36px 1fr;
+    gap: 8px 14px;
+    padding: 24px 0;
+  }
+  .work-meta { grid-column: 2; }
+  .work-body { grid-column: 1 / -1; padding-top: 4px; }
+  .work-status {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    padding-top: 0;
+  }
+  .work-headline { font-size: 18px; }
+
+  /* Contact — single column form */
+  .contact-form { grid-template-columns: 1fr; }
+  .submit-row { flex-wrap: wrap; }
+  .submit-row .btn { width: 100%; justify-content: center; }
+
+  /* Footer — stacked */
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px 20px;
+    margin-top: 32px;
+  }
+  .footer-r { flex-wrap: wrap; gap: 16px 20px; }
+}
+
+/* ============================================================
+   RTL adjustments — Hebrew layout
+   ------------------------------------------------------------
+   Most layouts mirror automatically via flex/grid. These rules
+   handle the asymmetric cases (margin-left, padding-left, etc).
+   ============================================================ */
+
+[dir="rtl"] .nav-links { margin-left: 0; margin-right: auto; }
+[dir="rtl"] .nav-cta { margin-inline-start: auto; }
+
+/* Hero meta strip and section index already use gap-based layout.
+   Approach metrics use border-left → switch to logical inset-inline-start. */
+.metric-cell { border-left: 0; border-inline-start: 1px solid var(--rule); padding-inline-start: 20px; padding-left: 0; }
+
+/* Work bullets — the "─" prefix is a typographic marker, not a direction.
+   Keep it on the reading-start side via logical properties. */
+.work-bullets li { padding-left: 0; padding-inline-start: 16px; }
+.work-bullets li::before { left: auto; inset-inline-start: 0; }
+
+/* Hero stack: wordmark-studio caption padding is decorative — make it logical */
+.hero-mark .wordmark-studio { padding-left: 0; padding-inline-start: 1.6em; padding-right: 0; }
+
+/* RTL hero: caption's tracking can read awkwardly under Hebrew. The display
+   wordmark itself stays Latin LTR (per HEBREW.md §1). */
+[dir="rtl"] .hero-mark .wordmark-group { direction: ltr; }
+[dir="rtl"] .footer-l .wordmark { direction: ltr; }
+[dir="rtl"] .brand .wordmark-group { direction: ltr; }
+
+/* Contact form select arrow — flip horizontal anchor in RTL */
+[dir="rtl"] .field select.input {
+  background-position: 18px 14px, 13px 14px;
+  padding-right: 12px;
+  padding-left: 36px;
+}
+
+/* Section index stamp in RTL — Hebrew label first, en-dash, number last
+   (HEBREW.md §11). The component already orders children that way for the
+   Hebrew variant; this keeps the visual gap symmetric. */
+[dir="rtl"] .section-index { direction: rtl; }
+
+/* Hero meta strip — keys/values are stacked, but the row itself should
+   anchor to reading-start in RTL. Already handled by gap-based flex; this
+   just suppresses the border-top color leaking through `inset` rules. */
+[dir="rtl"] .hero-meta { flex-direction: row; }
+
+/* Work row in RTL — the status chip column should anchor to the
+   reading-start side (right). flex/grid handle this automatically; this
+   override only re-aligns the status block on tablet/mobile breakpoints
+   where the row collapses to a 3-col layout. */
+@media (max-width: 1023px) {
+  [dir="rtl"] .work-status { justify-content: flex-start; }
+}
+@media (max-width: 767px) {
+  [dir="rtl"] .work-status { justify-content: flex-start; }
+}
+
+/* Skip link is positioned with `inset-inline-start` already (logical
+   property), so it lands at the reading-start corner in both directions.
+   No extra rule needed. */
+
+/* ============================================================
+   Hebrew typography on website surfaces
+   ------------------------------------------------------------
+   The site.css scale was designed for JetBrains Mono / IBM Plex Sans
+   English. Hebrew uses Assistant body + IBM Plex Mono for technical
+   labels (per HEBREW.md §3 / Phase 3). Headlines and section titles
+   keep the brand display family — but Hebrew has no mono, so we map
+   them to the bilingual body family instead, never to mono. The
+   wordmark stays Latin/mono per HEBREW.md §1.
+   ============================================================ */
+
+[lang="he"] .hero-title,
+[dir="rtl"] .hero-title,
+[lang="he"] .section-title,
+[dir="rtl"] .section-title,
+[lang="he"] .work-headline,
+[dir="rtl"] .work-headline,
+[lang="he"] .work-client,
+[dir="rtl"] .work-client,
+[lang="he"] .service-t,
+[dir="rtl"] .service-t {
+  font-family: var(--font-body-he);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+
+[lang="he"] .hero-lead,
+[dir="rtl"] .hero-lead,
+[lang="he"] .section-lead,
+[dir="rtl"] .section-lead,
+[lang="he"] .service-d,
+[dir="rtl"] .service-d,
+[lang="he"] .work-bullets li,
+[dir="rtl"] .work-bullets li {
+  font-family: var(--font-body-he);
+  letter-spacing: 0;
+}
+
+/* Body alignment — Hebrew anchors to reading-start (right) per HEBREW.md §13 */
+[dir="rtl"] .hero-title,
+[dir="rtl"] .hero-lead,
+[dir="rtl"] .section-title,
+[dir="rtl"] .section-lead,
+[dir="rtl"] .service-d,
+[dir="rtl"] .work-bullets li { text-align: start; }
+
+/* Wordmark + bracketed buttons keep Latin/mono (HEBREW.md §1, §5).
+   The .btn ::before/::after brackets render at logical positions
+   correctly without override. */

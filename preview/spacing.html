@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Spacing scale</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; background: var(--bg-0); padding: 24px; }
+  .grid { display: flex; flex-direction: column; gap: 8px; }
+  .row { display: grid; grid-template-columns: 70px 70px 1fr; gap: 12px; align-items: center; font-family: var(--font-mono); font-size: 11px; }
+  .tok { color: var(--fg-1); }
+  .px { color: var(--fg-3); text-align: right; }
+  .bar { height: 14px; background: var(--accent); border-radius: 1px; }
+  .cap { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); margin-bottom: 14px; }
+</style>
+</head>
+<body>
+<div class="cap">8-pt spacing scale · --s-1 → --s-10</div>
+<div class="grid">
+  <div class="row"><span class="tok">--s-1</span><span class="px">4</span><div class="bar" style="width:4px"></div></div>
+  <div class="row"><span class="tok">--s-2</span><span class="px">8</span><div class="bar" style="width:8px"></div></div>
+  <div class="row"><span class="tok">--s-3</span><span class="px">12</span><div class="bar" style="width:12px"></div></div>
+  <div class="row"><span class="tok">--s-4</span><span class="px">16</span><div class="bar" style="width:16px"></div></div>
+  <div class="row"><span class="tok">--s-5</span><span class="px">24</span><div class="bar" style="width:24px"></div></div>
+  <div class="row"><span class="tok">--s-6</span><span class="px">32</span><div class="bar" style="width:32px"></div></div>
+  <div class="row"><span class="tok">--s-7</span><span class="px">48</span><div class="bar" style="width:48px"></div></div>
+  <div class="row"><span class="tok">--s-8</span><span class="px">64</span><div class="bar" style="width:64px"></div></div>
+  <div class="row"><span class="tok">--s-9</span><span class="px">96</span><div class="bar" style="width:96px"></div></div>
+  <div class="row"><span class="tok">--s-10</span><span class="px">128</span><div class="bar" style="width:128px"></div></div>
+</div>
+</body>
+</html>

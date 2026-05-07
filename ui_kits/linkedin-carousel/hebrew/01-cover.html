@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <title>HE · 01 cover — y[AI]r studio carousel</title>
+  <link rel="stylesheet" href="../../../colors_and_type.css">
+  <link rel="stylesheet" href="../../linkedin-carousel/shared/carousel.css">
+  <style>
+    .cover-display em {
+      color: var(--accent);
+      font-style: normal;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="carousel-stage">
+    <article class="slide is-cover" dir="rtl" data-screen-label="HE · 01 Cover">
+      <!-- HE: cover kicker keeps the rightward "→" glyph as a swipe-cue (LTR convention) even though the slide flows RTL — readers swipe in the platform's swipe direction, not text direction. -->
+      <div class="slide-frame">
+
+        <header class="slide-header">
+          <span class="slide-eyebrow">שטח <span class="dot">·</span> AI בפרודקשן</span>
+          <span class="slide-stamp" dir="ltr"><span class="num">01</span> / 11</span>
+        </header>
+
+        <main class="slide-main">
+          <span class="cover-kicker"><span class="bar"></span> החליקו →</span>
+
+          <h1 class="slide-display cover-display">
+            למה רוב תהליכי&nbsp;<span class="ltr-inline" dir="ltr">[<span class="wordmark-ai" style="font-weight:700">AI</span>]</span>
+            <em>נתקעים</em> אחרי הדמו.
+          </h1>
+        </main>
+
+        <footer class="slide-footer">
+          <span class="wordmark-slot" dir="ltr">
+            <img class="footer-logo" src="../../../assets/wordmark-compact.svg" alt="y[AI]r studio" style="height:24px;width:auto;display:block" />
+          </span>
+          <span class="page-num" dir="ltr"><span class="now">01</span><span class="sep">/</span>11</span>
+        </footer>
+
+      </div>
+    </article>
+  </div>
+
+  <script>
+    function fit() {
+      const slide = document.querySelector('.slide');
+      const stage = document.querySelector('.carousel-stage');
+      if (!slide || !stage) return;
+      const pad = 48;
+      const sw = (stage.clientWidth  - pad) / 1080;
+      const sh = (stage.clientHeight - pad) / 1350;
+      slide.style.setProperty('--carousel-scale', Math.min(sw, sh, 1));
+    }
+    addEventListener('resize', fit);
+    fit();
+  </script>
+</body>
+</html>

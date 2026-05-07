@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>EN · 04 big-claim — y[AI]r studio carousel</title>
+  <link rel="stylesheet" href="../../../colors_and_type.css">
+  <link rel="stylesheet" href="../../linkedin-carousel/shared/carousel.css">
+</head>
+<body>
+  <div class="carousel-stage">
+    <article class="slide is-claim" data-screen-label="EN · 04 Big claim">
+      <div class="slide-frame">
+
+        <header class="slide-header">
+          <span class="slide-eyebrow">field notes <span class="dot">·</span> AI in production</span>
+          <span class="slide-stamp"><span class="num">04</span> / 11</span>
+        </header>
+
+        <main class="slide-main">
+          <h1 class="slide-display claim-headline">
+            most AI projects don't fail at the model.<br>
+            they fail at the <span class="claim-underline">workflow</span>.
+          </h1>
+          <span class="claim-attribution">y[AI]r studio · field note 04</span>
+        </main>
+
+        <footer class="slide-footer">
+          <span class="wordmark-slot">
+            <img class="footer-logo" src="../../../assets/wordmark-compact.svg" alt="y[AI]r studio" style="height:24px;width:auto;display:block" />
+          </span>
+          <span class="page-num"><span class="now">04</span><span class="sep">/</span>11</span>
+        </footer>
+
+      </div>
+    </article>
+  </div>
+
+  <script>
+    function fit() {
+      const slide = document.querySelector('.slide');
+      const stage = document.querySelector('.carousel-stage');
+      if (!slide || !stage) return;
+      const pad = 48;
+      const sw = (stage.clientWidth  - pad) / 1080;
+      const sh = (stage.clientHeight - pad) / 1350;
+      slide.style.setProperty('--carousel-scale', Math.min(sw, sh, 1));
+    }
+    addEventListener('resize', fit);
+    fit();
+  </script>
+</body>
+</html>

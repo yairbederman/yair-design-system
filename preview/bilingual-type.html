@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bilingual type sample — y[AI]r studio</title>
+  <link rel="stylesheet" href="../colors_and_type.css" />
+  <style>
+    /* Layout-only styles. Type tokens come from colors_and_type.css. */
+    .page {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: var(--s-9) var(--s-6) var(--s-10);
+    }
+
+    header.lede {
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: var(--s-6);
+      margin-bottom: var(--s-7);
+    }
+    header.lede h1 {
+      font-size: var(--fs-3xl);
+      letter-spacing: var(--tr-tight);
+      margin-bottom: var(--s-3);
+    }
+    header.lede p {
+      color: var(--fg-2);
+      max-width: 60ch;
+      margin: 0;
+    }
+
+    .panel {
+      border: 1px solid var(--rule);
+      border-radius: var(--r-md);
+      background: var(--bg-1);
+      box-shadow: var(--edge-top);
+      padding: var(--s-6);
+      margin-bottom: var(--s-6);
+    }
+    .panel + .panel { margin-top: var(--s-5); }
+
+    .panel-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--s-4);
+      margin-bottom: var(--s-5);
+      padding-bottom: var(--s-3);
+      border-bottom: 1px solid var(--rule);
+    }
+    .panel-head h2 {
+      font-family: var(--font-display);
+      font-size: var(--fs-xl);
+      font-weight: 500;
+      letter-spacing: var(--tr-tight);
+    }
+
+    /* English sample uses Inter — explicit family ref so this preview
+       renders the Phase 3 token even though :root[lang="en"] would also
+       resolve correctly. */
+    .sample-en {
+      font-family: var(--font-body-en);
+      direction: ltr;
+      text-align: left;
+    }
+    .sample-en .display {
+      font-family: var(--font-body-en);
+      font-size: var(--fs-3xl);
+      font-weight: 600;
+      letter-spacing: var(--tr-tight);
+      line-height: var(--lh-snug);
+      color: var(--fg-1);
+      text-wrap: balance;
+      margin: 0 0 var(--s-3);
+    }
+    .sample-en .body {
+      font-size: var(--fs-lg);
+      line-height: var(--lh-body);
+      color: var(--fg-2);
+      max-width: 56ch;
+      margin: 0;
+    }
+
+    .sample-he {
+      font-family: var(--font-body-he);
+      direction: rtl;
+      text-align: start;
+    }
+    .sample-he .display {
+      font-family: var(--font-body-he);
+      font-size: var(--fs-3xl);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--fg-1);
+      text-wrap: balance;
+      margin: 0 0 var(--s-3);
+    }
+    .sample-he .body {
+      font-size: var(--fs-lg);
+      line-height: 1.65;
+      color: var(--fg-2);
+      max-width: 52ch;
+      margin: 0;
+    }
+
+    /* Mixed-language line: Hebrew sentence with the wordmark embedded LTR. */
+    .sample-mixed {
+      direction: rtl;
+      text-align: start;
+      font-family: var(--font-body-he);
+      font-size: var(--fs-2xl);
+      line-height: 1.3;
+      color: var(--fg-1);
+      margin: 0;
+    }
+    .sample-mixed .wordmark { font-size: 0.95em; }
+
+    /* Mono row — proves mono is reserved for technical labels in both
+       languages, and never replaces body text. */
+    .mono-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-3) var(--s-5);
+      margin-top: var(--s-5);
+      padding-top: var(--s-4);
+      border-top: 1px dashed var(--rule);
+    }
+    .mono-row .meta-item {
+      display: inline-flex;
+      align-items: baseline;
+      gap: var(--s-2);
+    }
+    .mono-row .meta-item .key {
+      font-family: var(--font-mono-en);
+      font-size: var(--fs-xs);
+      text-transform: uppercase;
+      letter-spacing: var(--tr-ui);
+      color: var(--fg-3);
+    }
+    .mono-row .meta-item .val {
+      font-family: var(--font-mono-en);
+      font-size: var(--fs-xs);
+      color: var(--fg-2);
+      letter-spacing: var(--tr-wide);
+    }
+    .sample-he .mono-row .meta-item .key,
+    .sample-he .mono-row .meta-item .val {
+      font-family: var(--font-mono-he);
+    }
+
+    .footnote {
+      font-family: var(--font-mono-en);
+      font-size: var(--fs-xs);
+      color: var(--fg-3);
+      letter-spacing: var(--tr-wide);
+      margin-top: var(--s-7);
+      padding-top: var(--s-4);
+      border-top: 1px solid var(--rule);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-5);
+    }
+    .footnote span { white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="lede">
+      <span class="section-index"><span class="num">03</span> &mdash; bilingual type sample</span>
+      <h1 style="margin-top: var(--s-3)">English &amp; Hebrew, side by side.</h1>
+      <p>
+        Body text uses <span class="mono">--font-body-en</span> (Inter) for English
+        and <span class="mono">--font-body-he</span> (Assistant) for Hebrew. Mono is
+        reserved for technical labels in both languages.
+      </p>
+    </header>
+
+    <!-- English -->
+    <section class="panel sample-en" lang="en" dir="ltr">
+      <div class="panel-head">
+        <h2>English &middot; LTR</h2>
+        <span class="label-mono mono">lang="en" &middot; Inter</span>
+      </div>
+      <p class="display">AI systems that survive contact with production.</p>
+      <p class="body">From messy workflows to AI-assisted systems that actually get used.</p>
+
+      <div class="mono-row">
+        <span class="meta-item"><span class="key">family</span><span class="val">Inter</span></span>
+        <span class="meta-item"><span class="key">mono</span><span class="val">Geist Mono</span></span>
+        <span class="meta-item"><span class="key">dir</span><span class="val">ltr</span></span>
+      </div>
+    </section>
+
+    <!-- Hebrew -->
+    <section class="panel sample-he" lang="he" dir="rtl">
+      <div class="panel-head">
+        <h2>עברית &middot; RTL</h2>
+        <span class="label-mono mono" dir="ltr">lang="he" &middot; Assistant</span>
+      </div>
+      <p class="display">מערכות <span class="ltr-inline">AI</span> שמחזיקות גם ביום שאחרי הדמו.</p>
+      <p class="body">הופך תהליכים מבולגנים למערכות <span class="ltr-inline">AI</span> שעובדות באמת.</p>
+
+      <div class="mono-row">
+        <span class="meta-item"><span class="key">משפחה</span><span class="val" dir="ltr">Assistant</span></span>
+        <span class="meta-item"><span class="key">מונו</span><span class="val" dir="ltr">IBM Plex Mono</span></span>
+        <span class="meta-item"><span class="key">dir</span><span class="val" dir="ltr">rtl</span></span>
+      </div>
+    </section>
+
+    <!-- Mixed -->
+    <section class="panel" lang="he" dir="rtl">
+      <div class="panel-head">
+        <h2>מעורב &middot; Hebrew + Latin lockup</h2>
+        <span class="label-mono mono" dir="ltr">embedded LTR island</span>
+      </div>
+      <p class="sample-mixed">
+        <span class="ltr-inline wordmark" aria-label="y[AI]r studio"><span class="wordmark-y">y</span><span class="wordmark-bracket">[</span><span class="wordmark-ai">AI</span><span class="wordmark-bracket">]</span><span class="wordmark-r">r</span></span>
+        <span class="ltr-inline" style="font-family: var(--font-mono-en); font-size: 0.5em; letter-spacing: 0.2em; color: var(--fg-3); text-transform: uppercase; margin-inline-start: 0.4em;">studio</span>
+        בונה מערכות <span class="ltr-inline">AI</span> לעסקים.
+      </p>
+    </section>
+
+    <p class="footnote">
+      <span>// phase 03 — bilingual type</span>
+      <span>// brand: y[AI]r studio</span>
+      <span>// uppercase AI &middot; always</span>
+    </p>
+  </main>
+</body>
+</html>

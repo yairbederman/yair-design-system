@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>EN · 03 cta — y[AI]r studio carousel</title>
+  <link rel="stylesheet" href="../../../colors_and_type.css">
+  <link rel="stylesheet" href="../../linkedin-carousel/shared/carousel.css">
+</head>
+<body>
+  <div class="carousel-stage">
+    <article class="slide is-cta" data-screen-label="EN · 03 CTA">
+      <div class="slide-frame">
+
+        <header class="slide-header">
+          <span class="slide-eyebrow">field notes <span class="dot">·</span> AI in production</span>
+          <span class="slide-stamp"><span class="num">03</span> / 11</span>
+        </header>
+
+        <main class="slide-main">
+
+          <h2 class="slide-display cta-headline">
+            build the system,<br>
+            <span style="color:var(--accent);">not the demo.</span>
+          </h2>
+
+          <span class="cta-callout">work with us → hi@yair.studio</span>
+
+          <span class="cta-wordmark">
+            <img class="cta-logo" src="../../../assets/wordmark.svg" alt="y[AI]r studio" style="width:min(60%,520px);height:auto;display:block;margin:0 auto" />
+          </span>
+
+        </main>
+
+        <footer class="slide-footer">
+          <span>follow for more · /in/yair</span>
+          <span class="page-num"><span class="now">03</span><span class="sep">/</span>11</span>
+        </footer>
+
+      </div>
+    </article>
+  </div>
+
+  <script>
+    function fit() {
+      const slide = document.querySelector('.slide');
+      const stage = document.querySelector('.carousel-stage');
+      if (!slide || !stage) return;
+      const pad = 48;
+      const sw = (stage.clientWidth  - pad) / 1080;
+      const sh = (stage.clientHeight - pad) / 1350;
+      slide.style.setProperty('--carousel-scale', Math.min(sw, sh, 1));
+    }
+    addEventListener('resize', fit);
+    fit();
+  </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>case study · lognet systems</title>
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  body { background: var(--bg-0); margin: 0; }
+  .doc { max-width: 880px; margin: 0 auto; padding: 80px 48px 120px; color: var(--fg-1); }
+
+  .doc-head { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 24px; border-bottom: 1px solid var(--rule); margin-bottom: 64px; }
+  .doc-head .brand { font-family: var(--font-display); font-size: 18px; font-weight: 500; letter-spacing: -0.02em; }
+  .doc-head .brand .ai { color: var(--accent); font-weight: 700; }
+  .doc-head .doc-meta { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); display: flex; gap: 24px; }
+
+  .eyebrow { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 16px; display: inline-flex; gap: 8px; align-items: center; }
+  .eyebrow .num { color: var(--accent); }
+
+  h1 { font-family: var(--font-display); font-size: 64px; font-weight: 500; letter-spacing: -0.04em; line-height: 1.05; margin: 0 0 24px; }
+  .deck { font-family: var(--font-body); font-size: 21px; line-height: 1.4; color: var(--fg-2); margin: 0 0 48px; max-width: 720px; }
+
+  .meta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding: 24px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 64px; }
+  .meta-grid .k { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); margin-bottom: 6px; }
+  .meta-grid .v { font-family: var(--font-mono); font-size: 14px; color: var(--fg-1); }
+
+  h2 { font-family: var(--font-display); font-size: 32px; font-weight: 500; letter-spacing: -0.02em; margin: 64px 0 20px; }
+  h3 { font-family: var(--font-display); font-size: 20px; font-weight: 500; letter-spacing: -0.01em; margin: 32px 0 12px; color: var(--fg-1); }
+  p { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--fg-1); margin: 0 0 16px; }
+  p.lead { font-size: 19px; color: var(--fg-1); }
+  ul { margin: 0 0 24px; padding: 0; list-style: none; }
+  ul li { padding-left: 22px; position: relative; font-family: var(--font-body); font-size: 16px; line-height: 1.55; color: var(--fg-1); margin-bottom: 8px; }
+  ul li::before { content: "─"; position: absolute; left: 0; color: var(--fg-3); }
+
+  .results { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin: 32px 0 48px; }
+  .res { border-left: 2px solid var(--accent-rule); padding-left: 16px; }
+  .res .num { font-family: var(--font-display); font-size: 48px; font-weight: 500; letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .res .num .delta { color: var(--accent); }
+  .res .lab { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); margin-top: 10px; }
+  .res .ba { font-family: var(--font-mono); font-size: 11px; color: var(--fg-2); margin-top: 4px; }
+
+  blockquote { border-left: 2px solid var(--accent); padding: 0 0 0 24px; margin: 32px 0; font-family: var(--font-display); font-size: 24px; line-height: 1.35; letter-spacing: -0.02em; color: var(--fg-1); font-weight: 500; }
+  blockquote cite { display: block; font-family: var(--font-mono); font-size: 12px; font-style: normal; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); margin-top: 12px; }
+
+  pre.ascii-diagram { font-size: 13px; margin: 24px 0; }
+  pre.ascii-diagram .hl { color: var(--accent); }
+
+  .doc-foot { margin-top: 96px; padding-top: 24px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); }
+</style>
+</head>
+<body>
+<article class="doc">
+
+  <header class="doc-head">
+    <img class="brand-logo" src="../../assets/wordmark.svg" alt="y[AI]r studio" style="height:36px;width:auto;display:block" />
+    <span class="doc-meta"><span>case study · 003</span><span>q1 2026</span><span>confidential</span></span>
+  </header>
+
+  <span class="eyebrow"><span class="num">003</span><span>—</span><span>case study</span></span>
+  <h1>cutting spec rework 80% across two engineering teams.</h1>
+  <p class="deck">A 9-month rollout of an agentic feature lifecycle at Lognet Systems. Two teams, seven developers, one cloud + one legacy stack. The result: shipped faster, with fewer regressions, and a team that runs the pipeline without me.</p>
+
+  <div class="meta-grid">
+    <div><div class="k">client</div><div class="v">lognet systems</div></div>
+    <div><div class="k">role</div><div class="v">r&amp;d manager</div></div>
+    <div><div class="k">duration</div><div class="v">9 months</div></div>
+    <div><div class="k">stack</div><div class="v">next.js · java · claude code</div></div>
+  </div>
+
+  <h2>the situation</h2>
+  <p class="lead">Two engineering teams, separately managed, with diverging quality. Cloud was fast but flaky; legacy was stable but slow. Both spent half their time clarifying requirements after development started.</p>
+  <p>Spec-related rework hovered at 50% of total dev time. AI tooling was being adopted ad-hoc — some devs used Copilot, some used Claude, no shared review standard. PRs slipped through review. CI/CD existed but wasn't enforced as a quality gate. Production incidents spiked twice that quarter.</p>
+
+  <h2>what we changed</h2>
+
+  <h3>1. no spec, no code</h3>
+  <p>We made it a written rule: no development starts without a validated spec. Specs needed acceptance criteria, edge cases, and a verification plan — all reviewed before estimation.</p>
+
+  <h3>2. AI-assisted dev, on rails</h3>
+  <p>Standardised on Claude Code + GitHub Copilot for both teams, with shared prompt templates and a review checklist for AI-generated PRs. Devs got 25% throughput back, but only because the gates around the AI work were tightened in lockstep.</p>
+
+  <h3>3. ci/cd as a quality gate</h3>
+  <p>Pipelines went from "advisory" to "fail-fast." Tests, linting, type checks, and deploy verification all blocked merge. Cut prod incidents 40% in the first quarter after rollout.</p>
+
+  <h3>4. scrum + jira transparency</h3>
+  <p>Epics → tasks visible to the client weekly. Plan-vs-actual tracked in dashboards both teams owned. Predictability moved from "hope" to "70% within plan."</p>
+
+  <pre class="ascii-diagram">┌─ before ──────────────────┐         ┌─ after ───────────────────┐
+│ spec rework        50%    │   ─▶    │ spec rework        <span class="hl">10%</span>    │
+│ throughput         baseline│   ─▶    │ throughput         <span class="hl">+25%</span>   │
+│ bugs to qa         baseline│   ─▶    │ bugs to qa         <span class="hl">−25%</span>   │
+│ prod incidents     spiking │   ─▶    │ prod incidents     <span class="hl">−40%</span>   │
+└────────────────────────────┘         └────────────────────────────┘</pre>
+
+  <h2>results</h2>
+  <div class="results">
+    <div class="res"><div class="num"><span class="delta">−80</span>%</div><div class="lab">spec rework</div><div class="ba">50% → 10%</div></div>
+    <div class="res"><div class="num"><span class="delta">+25</span>%</div><div class="lab">throughput</div><div class="ba">AI-assisted</div></div>
+    <div class="res"><div class="num"><span class="delta">−25</span>%</div><div class="lab">bugs to qa</div><div class="ba">pr standards</div></div>
+    <div class="res"><div class="num"><span class="delta">+70</span>%</div><div class="lab">predictability</div><div class="ba">plan vs. actual</div></div>
+  </div>
+
+  <blockquote>
+    The "no spec, no code" policy felt heavy at first. Six weeks in we couldn't imagine working without it.
+    <cite>— team lead, cloud infrastructure</cite>
+  </blockquote>
+
+  <h2>what's next</h2>
+  <ul>
+    <li>Roll the same harness to the third (recently formed) team in q2 2026.</li>
+    <li>Extend verification gates to cover prompt regression, not just code regression.</li>
+    <li>Publish the internal playbook so other Lognet projects can self-onboard.</li>
+  </ul>
+
+  <footer class="doc-foot">
+    <img src="../../assets/wordmark-compact.svg" alt="y[AI]r studio" style="height:20px;width:auto;display:block" />
+    <span>case study · 003 · q1 2026</span>
+    <span>page 1 / 1</span>
+  </footer>
+
+</article>
+</body>
+</html>

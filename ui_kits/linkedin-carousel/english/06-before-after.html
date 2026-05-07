@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>EN · 06 before-after — y[AI]r studio carousel</title>
+  <link rel="stylesheet" href="../../../colors_and_type.css">
+  <link rel="stylesheet" href="../../linkedin-carousel/shared/carousel.css">
+</head>
+<body>
+  <div class="carousel-stage">
+    <article class="slide is-beforeafter" data-screen-label="EN · 06 Before · after">
+      <div class="slide-frame">
+
+        <header class="slide-header">
+          <span class="slide-eyebrow">field notes <span class="dot">·</span> AI in production</span>
+          <span class="slide-stamp"><span class="num">06</span> / 11</span>
+        </header>
+
+        <main class="slide-main">
+          <div class="ba-stack">
+            <div class="ba-panel before">
+              <span class="ba-tag">before</span>
+              <p class="ba-line">a clever prompt that worked once in the demo, glued to a notebook.</p>
+            </div>
+            <div class="ba-arrow">in production</div>
+            <div class="ba-panel after">
+              <span class="ba-tag">after</span>
+              <p class="ba-line">a versioned spec, a verification harness, and a human gate before customer impact.</p>
+            </div>
+          </div>
+        </main>
+
+        <footer class="slide-footer">
+          <span class="wordmark-slot">
+            <img class="footer-logo" src="../../../assets/wordmark-compact.svg" alt="y[AI]r studio" style="height:24px;width:auto;display:block" />
+          </span>
+          <span class="page-num"><span class="now">06</span><span class="sep">/</span>11</span>
+        </footer>
+
+      </div>
+    </article>
+  </div>
+
+  <script>
+    function fit() {
+      const slide = document.querySelector('.slide');
+      const stage = document.querySelector('.carousel-stage');
+      if (!slide || !stage) return;
+      const pad = 48;
+      const sw = (stage.clientWidth  - pad) / 1080;
+      const sh = (stage.clientHeight - pad) / 1350;
+      slide.style.setProperty('--carousel-scale', Math.min(sw, sh, 1));
+    }
+    addEventListener('resize', fit);
+    fit();
+  </script>
+</body>
+</html>

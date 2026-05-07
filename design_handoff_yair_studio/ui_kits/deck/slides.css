@@ -1,0 +1,97 @@
+/* Deck slides — y[AI]r studio */
+.slide {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-0);
+  color: var(--fg-1);
+  position: relative;
+  padding: 80px 96px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.slide-light { background: var(--bg-1); }
+.slide-accent { background: var(--accent); color: var(--bg-0); }
+
+.slide-stamp {
+  position: absolute; top: 40px; left: 96px; right: 96px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-mono); font-size: 14px;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--fg-3);
+}
+.stamp-mark { font-size: 16px; }
+
+.title-mark { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 32px; position: relative; }
+.title-mark .hero-mark { font-size: 200px; }
+.title-mark .wordmark-studio { font-size: 22px; letter-spacing: 0.7em; padding-left: 1.5em; padding-right: 0; margin-top: 24px; }
+
+.slide-foot {
+  position: absolute; bottom: 40px; left: 96px; right: 96px;
+  display: flex; justify-content: space-between;
+  font-family: var(--font-mono); font-size: 12px;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--fg-3);
+}
+
+/* Title slide */
+.s-title { display: flex; flex-direction: column; justify-content: flex-end; }
+.s-title .dot-grid { position: absolute; inset: 0; opacity: 0.18; }
+.s-title h1 { font-family: var(--font-display); font-size: 128px; font-weight: 500; letter-spacing: -0.05em; line-height: 0.95; color: var(--fg-1); margin: 0 0 32px; position: relative; }
+.s-title h1 .ai { color: var(--accent); font-weight: 700; }
+.s-title .tag { font-family: var(--font-body); font-size: 28px; color: var(--fg-2); max-width: 900px; line-height: 1.3; position: relative; }
+
+/* Section slide */
+.s-section { display: flex; flex-direction: column; justify-content: center; }
+.s-section .num { font-family: var(--font-mono); font-size: 36px; color: var(--accent); font-weight: 500; letter-spacing: -0.02em; margin-bottom: 16px; }
+.s-section h2 { font-family: var(--font-display); font-size: 96px; font-weight: 500; letter-spacing: -0.04em; line-height: 1; color: var(--fg-1); margin: 0; max-width: 1400px; }
+
+/* Content slide */
+.s-content { padding-top: 110px; }
+.s-content h2 { font-family: var(--font-display); font-size: 56px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.05; color: var(--fg-1); margin: 0 0 48px; max-width: 1400px; }
+.s-content .body { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.s-content .body p { font-family: var(--font-body); font-size: 22px; line-height: 1.5; color: var(--fg-2); margin: 0 0 16px; }
+.s-content .body .lead { color: var(--fg-1); font-size: 28px; line-height: 1.35; }
+
+/* Metrics slide */
+.s-metrics { padding-top: 110px; }
+.s-metrics h2 { font-family: var(--font-display); font-size: 48px; font-weight: 500; letter-spacing: -0.03em; color: var(--fg-1); margin: 0 0 48px; }
+.s-metrics .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.s-metrics .cell { border-left: 2px solid var(--rule); padding-left: 24px; }
+.s-metrics .num { font-family: var(--font-display); font-size: 112px; font-weight: 500; letter-spacing: -0.05em; line-height: 1; color: var(--fg-1); font-variant-numeric: tabular-nums; }
+.s-metrics .num .delta { color: var(--accent); }
+.s-metrics .lab { font-family: var(--font-mono); font-size: 16px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); margin-top: 16px; }
+.s-metrics .ba { font-family: var(--font-mono); font-size: 16px; color: var(--fg-2); margin-top: 6px; }
+
+/* Quote slide */
+.s-quote { display: flex; flex-direction: column; justify-content: center; padding: 80px 160px; }
+.s-quote blockquote { font-family: var(--font-display); font-size: 72px; font-weight: 500; letter-spacing: -0.04em; line-height: 1.1; color: var(--fg-1); margin: 0 0 48px; max-width: 1500px; }
+.s-quote blockquote .hl { color: var(--accent); }
+.s-quote cite { font-family: var(--font-mono); font-size: 18px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); font-style: normal; }
+
+/* Diagram slide */
+.s-diagram { padding-top: 110px; }
+.s-diagram h2 { font-family: var(--font-display); font-size: 48px; font-weight: 500; letter-spacing: -0.03em; color: var(--fg-1); margin: 0 0 48px; }
+.s-diagram pre { font-family: var(--font-mono); font-size: 22px; line-height: 1.4; color: var(--fg-2); white-space: pre; }
+.s-diagram pre .hl { color: var(--accent); }
+
+/* Comparison slide */
+.s-compare { padding-top: 110px; }
+.s-compare h2 { font-family: var(--font-display); font-size: 48px; font-weight: 500; letter-spacing: -0.03em; color: var(--fg-1); margin: 0 0 48px; }
+.s-compare .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.s-compare .col { border: 1px solid var(--rule); border-radius: 4px; padding: 32px; background: var(--bg-1); }
+.s-compare .col.bad { border-color: rgba(229, 72, 77, 0.3); }
+.s-compare .col.good { border-color: var(--accent-rule); background: rgba(255, 75, 31, 0.04); }
+.s-compare .col h3 { font-family: var(--font-mono); font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); margin: 0 0 16px; }
+.s-compare .col.good h3 { color: var(--accent); }
+.s-compare .col ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.s-compare .col li { font-family: var(--font-body); font-size: 22px; line-height: 1.4; color: var(--fg-1); padding-left: 28px; position: relative; }
+.s-compare .col.bad li::before { content: "✗"; position: absolute; left: 0; color: var(--err); }
+.s-compare .col.good li::before { content: "✓"; position: absolute; left: 0; color: var(--ok); }
+
+/* Closing slide */
+.s-close { display: flex; flex-direction: column; justify-content: center; }
+.s-close h2 { font-family: var(--font-display); font-size: 96px; font-weight: 500; letter-spacing: -0.05em; line-height: 1; color: var(--fg-1); margin: 0 0 48px; }
+.s-close .meta { display: flex; gap: 64px; padding-top: 32px; border-top: 1px solid var(--rule); }
+.s-close .meta > div { font-family: var(--font-mono); font-size: 18px; }
+.s-close .meta .k { color: var(--fg-3); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; margin-bottom: 4px; }
+.s-close .meta .v { color: var(--fg-1); }
