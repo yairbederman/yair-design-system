@@ -33,7 +33,9 @@
         </main>
 
         <footer class="slide-footer">
-          <span>עקבו אחרינו · <span dir="ltr">/in/yair</span></span>
+          <!-- HE: wordmark-slot keeps RTL flow here (text content, not the LTR Latin SVG wordmark).
+               Inline direction:rtl overrides the slot's default LTR isolation. -->
+          <span class="wordmark-slot" style="direction:rtl">עקבו אחרינו · <span dir="ltr">/in/yair</span></span>
           <span class="page-num" dir="ltr"><span class="now">03</span><span class="sep">/</span>11</span>
         </footer>
 

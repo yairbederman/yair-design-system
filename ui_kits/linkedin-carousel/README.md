@@ -119,8 +119,10 @@ Every slide imports two stylesheets:
   if the slide is dropped into an LTR host.
 - Body / headlines / list rows / process labels / case copy / quote copy
   use **Assistant** (`--font-body-he`) — never monospace.
-- Mono is allowed only on small (≤14 px) technical labels: page counter,
-  metric context line, eyebrow stamps when they contain Latin runs.
+- Mono is allowed on technical labels: page counter, metric context line,
+  eyebrow stamps when they contain Latin runs. These labels still follow
+  the carousel readability floor (≥ 28 px) — no meaningful carousel text
+  renders below 28 px after LinkedIn compression.
 - The wordmark stays Latin and **always** wraps in `dir="ltr"` — it's a
   brand mark, not a translatable string.
 - Latin runs (AI tool names, URLs, page numbers, the wordmark, percentages
@@ -140,7 +142,7 @@ Every slide imports two stylesheets:
 | Surface | English | Hebrew |
 |---|---|---|
 | Body / headlines / list rows / quotes | **Inter** (`--font-body-en`) | **Assistant** (`--font-body-he`) |
-| Small technical labels (≤14 px) | **Geist Mono** (`--font-mono-en`) | **IBM Plex Mono** (`--font-mono-he`) — only where the label is genuinely technical / numeric / metadata |
+| Small technical labels (≥ 28 px floor) | **Geist Mono** (`--font-mono-en`) | **IBM Plex Mono** (`--font-mono-he`) — only where the label is genuinely technical / numeric / metadata |
 
 - Hebrew main text **never** uses Geist Mono.
 - Hebrew main text **never** uses Inter.
@@ -158,14 +160,69 @@ and the deck.
 ## Slide size & export — 1080 × 1350
 
 - Canvas: **1080 × 1350 px**, dark, full-bleed, portrait.
-- Internal margins: 64 px horizontal, 96 px vertical (`HEBREW.md §18.2`).
+- Internal padding tokens (canonical, defined in `shared/carousel.css`):
+  - `--pad-x: 96px` (horizontal gutter, both sides)
+  - `--pad-top: 112px` (top gutter)
+  - `--pad-bottom: 144px` (bottom gutter — pulls the footer above the
+    LinkedIn overlay reserve)
+  - `--linkedin-bottom-reserve: 120px` (no important content inside this
+    bottom band; `--pad-bottom` already accounts for it)
 - The slide auto-scales to the viewport on screen but exports at 1:1.
 - Safe area: keep important text inside the `.slide-frame` — never let
-  body or display copy touch the outer 64 px / 96 px gutter. The shared
-  rule already enforces this; do not override.
-- Readable at LinkedIn feed size: body ≥ 28 px, list/process labels ≥ 24 px,
-  metric hero ≥ 200 px. Don't shrink below these to fit longer copy —
-  rewrite the copy instead.
+  body or display copy enter the outer gutter defined by the tokens
+  above. The shared rule already enforces this; do not override.
+- Readable at LinkedIn feed size: body ≥ 46 px, metadata/footer ≥ 28 px,
+  metric hero defaults to 220 px. Don't shrink below these to fit longer
+  copy — rewrite the copy instead.
+
+### Authoring constraints (V4)
+
+- **Metric hero (`.metric-hero`).** Default font-size is **220 px**, sized to
+  fit the 888 px slide-frame content width for 4–5 character values plus a
+  short unit (`1,300/wk`, `12,500/mo`, `−80%`, `$1.4M`). Shorter values
+  (≤3 characters, no unit) may inline-override `font-size` up to **280 px**
+  on the element. The shared rule applies `white-space: nowrap` and
+  `max-width: 100%` defensively but deliberately does **not** clip — if a
+  metric still overflows after override, shorten the value or unit.
+- **CTA footer left text caps at ~36 characters** at 28 px before it
+  visually merges with the page-num at LinkedIn 25 % feed thumbnail.
+  Longer handles should wrap, truncate, shorten, or split into a
+  wordmark + handle lockup. The shared rule adds a `gap: 32 px`
+  between footer ends so short handles never collide; long handles
+  must still be authored short.
+- **CTA footer in `03-cta.html`.** The footer left text wraps in
+  `<span class="wordmark-slot">` to match the other 10 templates. In
+  Hebrew, the slot is overridden inline to `direction: rtl` so Hebrew
+  copy reads right-to-left while the Latin handle stays isolated as
+  `dir="ltr"`. Keep this parity when editing the HE CTA template.
+
+### LinkedIn readability rules (post-compression)
+
+- **Body text** ≥ **46 px**.
+- **Metadata, eyebrows, page numbers, footer text** ≥ **28 px**.
+- **Metric hero** defaults to **220 px** (see authoring constraint above
+  for the 280 px override ceiling).
+- **No meaningful carousel text below 28 px** — including mono labels,
+  page counters, and metric context lines. The previous "≤ 14 px" mono
+  guidance from earlier kits does not apply to LinkedIn carousels.
+- **Logo assets** (canonical):
+  - Footer logo (every slide except the CTA): `assets/wordmark-compact.svg`.
+  - CTA / larger logo lockup (`03-cta.html`): `assets/wordmark.svg`.
+  - The bracket text `y[AI]r studio` (`<span class="wordmark">` /
+    `shared/inline-written-brand.html`) is the **inline written-brand
+    spelling**, used inside running copy. It is **not** used as the
+    visual carousel logo on any slide — footers and CTA lockups must
+    use the SVG assets above.
+- The bottom `--linkedin-bottom-reserve` (**120 px**) of every slide is
+  reserved for the LinkedIn overlay UI. No important content, footer,
+  or branding may sit inside that band. The shared `--pad-bottom: 144px`
+  token already pulls the footer above the reserve — do not override it.
+- Side gutters use `--pad-x: 96px`; top gutter uses `--pad-top: 112px`.
+- Prefer short chunks over paragraphs when authoring slides.
+
+These rules are enforced in `shared/carousel.css`. Don't edit slide
+templates just to reduce text density — that belongs in the
+carousel authoring/content rules, not the renderer.
 
 ### Export to PNG / PDF
 
@@ -203,9 +260,9 @@ The brand is always written **`y[AI]r studio`**:
 
 The reusable inline written-brand snippet is in
 `shared/inline-written-brand.html` — typographic spelling for inline use
-only, **not** the primary visual logo. For carousel footers and CTA logos,
-use the SVG logo assets (`assets/wordmark.svg`, `assets/wordmark-compact.svg`,
-`assets/wordmark-accent.svg`).
+only, **not** the visual carousel logo. The bracket text never appears
+as the slide logo. For carousel footers use `assets/wordmark-compact.svg`;
+for the CTA / larger logo lockup use `assets/wordmark.svg`.
 
 ---
 

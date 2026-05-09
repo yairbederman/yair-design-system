@@ -1,18 +1,38 @@
 <!--
-  Inline written-brand treatment only — NOT the primary visual logo.
+  inline-written-brand.html
+  ----------------------------------------------------------
+  Carousel-visual brand slot.
 
-  This snippet is the typographic spelling of the brand for inline use
-  (body copy, accessible labels, header text, etc.). It is not the
-  carousel's footer/CTA logo.
+  This partial renders the **primary visual logo** (block SVG)
+  for carousel placements that need a real logo \u2014 footer,
+  CTA lockup, cover anchor.
 
-  For carousel footers and CTA logos, use the SVG logo assets:
-    assets/wordmark.svg          — primary visual logo (block lockup, with STUDIO)
-    assets/wordmark-compact.svg  — block lockup, no STUDIO caption
-    assets/wordmark-accent.svg   — accent block variant (orange block) — emphasis only
+  Chosen variant: assets/wordmark.svg
+    \u2022 white block on dark, reads cleanly on #0A0A0B
+    \u2022 includes the STUDIO caption (full lockup)
+    \u2022 has a viewBox, no embedded raster, no external deps
+    \u2022 monospace text uses a fallback chain (ui-monospace \u2192
+      SFMono-Regular \u2192 JetBrains Mono \u2192 Menlo \u2192 Consolas \u2192
+      monospace) so PDF / PNG export does not require a
+      specific local font.
 
-  Always LTR. The `aria-label` includes "studio" per brand rule.
+  For tightly-bound footer slots, swap to wordmark-compact.svg.
+  For accent-emphasis blocks (rare), swap to wordmark-accent.svg.
+  Do NOT replace this with bracket text \u2014 the typographic
+  spelling below is the inline-written-brand fallback only,
+  not the primary visual logo.
 -->
-<span class="wordmark" aria-label="y[AI]r studio" dir="ltr">
-  <span class="wordmark-y">y</span><span class="wordmark-bracket">[</span><span class="wordmark-ai">AI</span><span class="wordmark-bracket">]</span><span class="wordmark-r">r</span>
-  <span class="wordmark-studio" style="font-size: 0.34em; padding-left: 0.6em;">studio</span>
-</span>
+<img class="brand-logo" src="../../../assets/wordmark.svg" alt="y[AI]r studio" />
+
+<!--
+  Inline written-brand fallback only \u2014 not the primary visual logo.
+  Kept here for reference where a live, selectable, screen-reader-
+  friendly typographic spelling is required (body copy, accessible
+  labels, header text). Do NOT use this as the carousel footer/CTA
+  logo \u2014 use the SVG <img> above.
+
+  <span class="wordmark" aria-label="y[AI]r studio" dir="ltr">
+    <span class="wordmark-y">y</span><span class="wordmark-bracket">[</span><span class="wordmark-ai">AI</span><span class="wordmark-bracket">]</span><span class="wordmark-r">r</span>
+    <span class="wordmark-studio" style="font-size: 0.34em; padding-left: 0.6em;">studio</span>
+  </span>
+-->
