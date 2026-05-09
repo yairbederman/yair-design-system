@@ -8,6 +8,21 @@
    Loads on top of /colors_and_type.css — do not redefine tokens.
    ============================================================ */
 
+/* ---- LinkedIn safe-area tokens ----
+   The carousel must remain readable AFTER LinkedIn's compression and
+   under LinkedIn's overlay UI. The bottom 120px of every slide is
+   reserved for that overlay risk — no meaningful text or branding
+   may sit inside that band. Side gutters stay 80–100px.
+
+   All sizes are px (not pt). 1pt ≈ 1.333px, so older pt-based values
+   should be migrated; never trust pt for LinkedIn export. */
+:root {
+  --pad-x: 96px;
+  --pad-top: 112px;
+  --pad-bottom: 144px;
+  --linkedin-bottom-reserve: 120px;
+}
+
 /* ---- Canvas ---- */
 .carousel-stage {
   /* Full-viewport letterbox host. The slide itself is fixed-size; we
@@ -31,9 +46,12 @@
   overflow: hidden;
   transform: scale(var(--carousel-scale, 1));
   transform-origin: center center;
-  /* Internal margins per HEBREW.md §18.2 — 64 horizontal, 96 vertical. */
-  --pad-x: 64px;
-  --pad-y: 96px;
+  /* Safe-area padding — see :root tokens.
+     - sides: 96px (within the 80–100px guideline)
+     - top:   112px
+     - bottom:144px (so footer/logo sit comfortably ABOVE the
+                     bottom 120px LinkedIn overlay reserve) */
+  --pad-y: var(--pad-top); /* legacy alias — some opt-in rules still read --pad-y */
   /* Light hairline frame so a slide reads as a "panel" against any host. */
   outline: 1px solid var(--rule);
   outline-offset: -1px;
@@ -49,7 +67,9 @@
    header row · main · footer row. */
 .slide-frame {
   position: absolute;
-  inset: var(--pad-y) var(--pad-x);
+  /* top · right · bottom · left — bottom uses --pad-bottom (144px) so the
+     footer/logo never enters the bottom 120px LinkedIn overlay reserve. */
+  inset: var(--pad-top) var(--pad-x) var(--pad-bottom);
   display: grid;
   grid-template-rows: auto 1fr auto;
   row-gap: 48px;
@@ -66,7 +86,8 @@
 
 .slide-eyebrow {
   font-family: var(--font-mono-en);
-  font-size: 14px;
+  /* LinkedIn readability: metadata floor 28px (was 14px). */
+  font-size: 28px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.18em;
@@ -90,7 +111,8 @@
 /* The "01 — series" stamp, mirrored for RTL via flex order. */
 .slide-stamp {
   font-family: var(--font-mono-en);
-  font-size: 13px;
+  /* LinkedIn readability: metadata floor 28px (was 13px). */
+  font-size: 28px;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: var(--fg-3);
@@ -109,7 +131,9 @@
 }
 
 /* Hebrew display headlines — Assistant, scaled per §18.1.
-   Body sizes do NOT downsize. */
+   Body sizes do NOT downsize.
+   The base .slide-display is the body-slide headline — 80/76 px is the
+   LinkedIn-readable floor. Cover / claim / cta override upward below. */
 .slide-display {
   font-family: var(--font-body-en);
   font-size: 88px;
@@ -129,11 +153,12 @@
   font-weight: 700;
 }
 
-/* Body / lead — IBM/Inter at 28px reads cleanly on a phone scroll. */
+/* Body copy — bumped to 46/48 px (was 28/30) so text survives LinkedIn
+   compression at 25% feed zoom. body__text floor = 46px (English). */
 .slide-body {
   font-family: var(--font-body-en);
-  font-size: 28px;
-  line-height: 1.5;
+  font-size: 46px;
+  line-height: 1.3;
   font-weight: 400;
   color: var(--fg-2);
   max-width: 880px;
@@ -152,19 +177,28 @@
 
 .slide[dir="rtl"] .slide-body {
   font-family: var(--font-body-he);
-  font-size: 30px;
-  line-height: 1.55;
+  font-size: 48px;
+  line-height: 1.4;
 }
 
-/* ---- Footer row ---- */
+/* ---- Footer row ----
+   Sits at the bottom of .slide-frame, which ends at y=1206 (1350 − 144).
+   That keeps every footer pixel ABOVE the bottom 120px LinkedIn overlay
+   reserve (which starts at y=1230). Don't move the footer outside the frame. */
 .slide-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* Defensive whitespace between the footer left side (wordmark/handle)
+     and the page-num. At 28px footer type with long handles like
+     /in/firstname-lastname, the two runs visually merge at LinkedIn's
+     25% feed thumbnail without an explicit gap. */
+  gap: 32px;
   padding-top: 20px;
   border-top: 1px solid var(--rule);
   font-family: var(--font-mono-en);
-  font-size: 13px;
+  /* LinkedIn readability: footer floor 28px (was 13px). */
+  font-size: 28px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--fg-3);
@@ -176,8 +210,26 @@
   direction: ltr;
 }
 
+/* Primary footer logo rule — visible at LinkedIn's 25% feed scale.
+   Targets the existing .footer-logo class used in every slide template;
+   the alias .brand-logo matches the inline-written-brand partial. */
+.slide-footer .wordmark-slot .footer-logo,
+.slide-footer .wordmark-slot .brand-logo {
+  width: 220px !important;   /* !important overrides legacy inline height/width on <img> */
+  height: auto !important;
+  display: block;
+}
+/* Cover slides anchor the logo a touch larger so the opening frame
+   reads as a branded cover even after compression. */
+.slide.is-cover .slide-footer .wordmark-slot .footer-logo,
+.slide.is-cover .slide-footer .wordmark-slot .brand-logo {
+  width: 280px !important;
+}
+
 .slide-footer .page-num {
   font-variant-numeric: tabular-nums;
+  /* LinkedIn readability: page-num floor 28px (inherits from .slide-footer). */
+  font-size: 28px;
   /* Always Latin digits, even in RTL flow per §6 + §18.2. */
   unicode-bidi: isolate;
   direction: ltr;
@@ -207,13 +259,14 @@
 .cover-kicker {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   font-family: var(--font-mono-en);
-  font-size: 13px;
+  /* LinkedIn readability: metadata floor 28px (was 13px). */
+  font-size: 28px;
   text-transform: uppercase;
   letter-spacing: 0.22em;
   color: var(--fg-3);
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 }
 .slide[dir="rtl"] .cover-kicker {
   font-family: var(--font-body-he);
@@ -222,18 +275,31 @@
 }
 
 .cover-kicker .bar {
-  width: 28px;
-  height: 1px;
+  width: 40px;
+  height: 2px;
   background: var(--accent);
 }
 
+/* Cover headline — the largest type on any slide. Bumped from 96/88 to
+   132/124 px so the cover survives LinkedIn compression at 25% zoom.
+   Cover subhead (when authored as <p class="slide-body">) = 44px. */
 .cover-display {
-  font-size: 96px;
+  font-size: 132px;
   line-height: 1.02;
+  letter-spacing: -0.04em;
 }
 .slide[dir="rtl"] .cover-display {
-  font-size: 88px;
+  font-size: 124px;
   line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+.slide.is-cover .slide-body {
+  font-size: 44px;
+  line-height: 1.3;
+}
+.slide[dir="rtl"].is-cover .slide-body {
+  font-size: 44px;
+  line-height: 1.4;
 }
 
 /* ---- Content-slide treatment ---- */
@@ -241,29 +307,33 @@
   gap: 40px;
 }
 
+/* Body-slide headline — was 36px, now 80/76 px to meet the LinkedIn
+   body-headline floor. This selector functions as body__headline. */
 .content-lede {
   font-family: var(--font-body-en);
-  font-size: 36px;
-  line-height: 1.25;
+  font-size: 80px;
+  line-height: 1.08;
   font-weight: 600;
   color: var(--fg-1);
-  letter-spacing: -0.015em;
-  max-width: 880px;
+  letter-spacing: -0.03em;
+  max-width: 920px;
   margin: 0;
+  text-wrap: balance;
 }
 .slide[dir="rtl"] .content-lede {
   font-family: var(--font-body-he);
-  font-size: 36px;
-  line-height: 1.4;
-  letter-spacing: 0;
+  font-size: 76px;
+  line-height: 1.18;
+  letter-spacing: -0.005em;
   font-weight: 700;
 }
 
 .content-aside {
   /* Small labelled key on the left in EN, right in HE (auto via dir). */
   font-family: var(--font-mono-en);
-  font-size: 12px;
-  letter-spacing: 0.22em;
+  /* LinkedIn readability: metadata floor 28px (was 12px). */
+  font-size: 28px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--fg-3);
   display: inline-flex;
@@ -271,9 +341,12 @@
   gap: 10px;
 }
 .slide[dir="rtl"] .content-aside {
-  /* Mono is acceptable here — small label, not body. Per task §5: mono
-     OK for technical labels in Hebrew "only if small". */
-  font-size: 12px;
+  /* No longer a small mono label at 28px. Switch to Hebrew body family
+     so HE glyphs render correctly at the new readability floor. */
+  font-family: var(--font-body-he);
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 .content-aside .pip {
   width: 6px;
@@ -288,13 +361,25 @@
     var(--bg-0);
 }
 
+/* CTA headline — bumped from 84/76 to 108/100 to match the LinkedIn floor. */
 .cta-headline {
-  font-size: 84px;
-  line-height: 1.06;
+  font-size: 108px;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
 }
 .slide[dir="rtl"] .cta-headline {
-  font-size: 76px;
-  line-height: 1.18;
+  font-size: 100px;
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+}
+/* CTA body — same floor as body slides (46/48 px). */
+.slide.is-cta .slide-body {
+  font-size: 46px;
+  line-height: 1.3;
+}
+.slide[dir="rtl"].is-cta .slide-body {
+  font-size: 48px;
+  line-height: 1.4;
 }
 
 .cta-wordmark {
@@ -308,19 +393,20 @@
 
 .cta-callout {
   font-family: var(--font-mono-en);
-  font-size: 14px;
+  /* CTA eyebrow / callout — LinkedIn readability floor 28px (was 14px). */
+  font-size: 28px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-top: 32px;
+  margin-top: 40px;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
 .cta-callout::before {
   content: "";
-  width: 24px;
-  height: 1px;
+  width: 40px;
+  height: 2px;
   background: var(--accent);
 }
 .slide[dir="rtl"] .cta-callout {
@@ -329,16 +415,17 @@
   letter-spacing: 0.04em;
 }
 
-/* ---- Optional metadata label (small chip used on content slides) ---- */
+/* ---- Optional metadata label (chip used on content slides) ---- */
 .meta-label {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 10px;
+  gap: 10px;
+  padding: 6px 12px;
   font-family: var(--font-mono-en);
-  font-size: 11px;
+  /* LinkedIn readability: metadata floor 28px (was 11px). */
+  font-size: 28px;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   color: var(--accent);
   background: var(--accent-soft);
   border: 1px solid var(--accent-rule);
@@ -347,7 +434,10 @@
 }
 .slide[dir="rtl"] .meta-label {
   align-self: flex-end;
-  /* Still mono — it is small (11px) per HE rule. */
+  /* No longer a small mono label at 28px — Hebrew body family for HE glyphs. */
+  font-family: var(--font-body-he);
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
 /* ============================================================
@@ -394,13 +484,14 @@
 .claim-attribution {
   margin-top: 56px;
   font-family: var(--font-mono-en);
-  font-size: 13px;
-  letter-spacing: 0.22em;
+  /* LinkedIn readability: attribution floor 28px (was 13px). */
+  font-size: 28px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--fg-3);
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 .claim-attribution::before {
   content: "";
@@ -451,9 +542,10 @@
 }
 .list-rows .n {
   font-family: var(--font-mono-en);
-  font-size: 18px;
+  /* LinkedIn readability: numbering floor 28px (was 18px). */
+  font-size: 28px;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: var(--accent);
   font-variant-numeric: tabular-nums;
 }
@@ -498,8 +590,9 @@
 .ba-panel.after  { border-color: var(--accent-rule); background: rgba(255, 75, 31, 0.04); }
 .ba-tag {
   font-family: var(--font-mono-en);
-  font-size: 12px;
-  letter-spacing: 0.22em;
+  /* LinkedIn readability: tag floor 28px (was 12px). */
+  font-size: 28px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--fg-3);
 }
@@ -521,14 +614,16 @@
 }
 .ba-arrow {
   font-family: var(--font-mono-en);
-  font-size: 14px;
-  letter-spacing: 0.22em;
+  /* LinkedIn readability: label floor 28px (was 14px). */
+  font-size: 28px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 18px 32px;
+  /* Trim vertical padding to absorb the larger type without resizing the slot. */
+  padding: 12px 32px;
 }
 .ba-arrow::before,
 .ba-arrow::after {
@@ -546,8 +641,9 @@
 /* ---- Mistake → correction ---- */
 .mistake-eyebrow {
   font-family: var(--font-mono-en);
-  font-size: 12px;
-  letter-spacing: 0.22em;
+  /* LinkedIn readability: eyebrow floor 28px (was 12px). */
+  font-size: 28px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--err);
   display: inline-flex;
@@ -558,7 +654,8 @@
 .mistake-eyebrow::before {
   content: "✗";
   color: var(--err);
-  font-size: 16px;
+  /* Match new eyebrow size so the glyph stays visually paired. */
+  font-size: 28px;
 }
 .mistake-line {
   font-family: var(--font-body-en);
@@ -580,8 +677,9 @@
 }
 .correction-eyebrow {
   font-family: var(--font-mono-en);
-  font-size: 12px;
-  letter-spacing: 0.22em;
+  /* LinkedIn readability: eyebrow floor 28px (was 12px). */
+  font-size: 28px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
   display: inline-flex;
@@ -592,7 +690,8 @@
 .correction-eyebrow::before {
   content: "→";
   color: var(--accent);
-  font-size: 18px;
+  /* Match new eyebrow size so the glyph stays visually paired. */
+  font-size: 28px;
 }
 .slide[dir="rtl"] .correction-eyebrow::before { content: "←"; }
 .correction-line {
@@ -659,7 +758,8 @@
 }
 .process-step .num {
   font-family: var(--font-mono-en);
-  font-size: 20px;
+  /* LinkedIn readability: numbering floor 28px (was 20px). */
+  font-size: 28px;
   font-weight: 600;
   color: var(--accent);
   font-variant-numeric: tabular-nums;
@@ -668,33 +768,40 @@
 }
 .process-step .label {
   font-family: var(--font-body-en);
-  font-size: 24px;
+  /* LinkedIn readability: label floor 28px (was 24px). */
+  font-size: 28px;
   line-height: 1.3;
   font-weight: 500;
   color: var(--fg-1);
 }
 .slide[dir="rtl"] .process-step .label {
   font-family: var(--font-body-he);
-  font-size: 26px;
+  /* RTL parity with the new 28px floor (was 26px). */
+  font-size: 28px;
   line-height: 1.4;
   font-weight: 600;
 }
 .process-step .gate {
   font-family: var(--font-mono-en);
-  font-size: 11px;
-  letter-spacing: 0.22em;
+  /* LinkedIn readability: badge floor 28px (was 11px).
+     Tightened letter-spacing + padding to absorb the larger type and
+     keep the chip from overrunning its column. Authors should use
+     short tokens (e.g. GATE, OK, FIX) per the readability guidance. */
+  font-size: 28px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--fg-3);
   border: 1px solid var(--rule-strong);
-  padding: 4px 8px;
+  padding: 4px 10px;
   white-space: nowrap;
 }
 
 /* ---- Case study ---- */
 .case-client {
   font-family: var(--font-mono-en);
-  font-size: 12px;
-  letter-spacing: 0.22em;
+  /* LinkedIn readability: metadata floor 28px (was 12px). */
+  font-size: 28px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--fg-3);
   display: inline-flex;
@@ -729,22 +836,25 @@
 }
 .case-fact .k {
   font-family: var(--font-mono-en);
-  font-size: 11px;
-  letter-spacing: 0.22em;
+  /* LinkedIn readability: metadata key floor 28px (was 11px). */
+  font-size: 28px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--fg-3);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 .case-fact .v {
   font-family: var(--font-body-en);
-  font-size: 24px;
+  /* LinkedIn readability: value floor 28px (was 24px). */
+  font-size: 28px;
   line-height: 1.3;
   font-weight: 500;
   color: var(--fg-1);
 }
 .slide[dir="rtl"] .case-fact .v {
   font-family: var(--font-body-he);
-  font-size: 26px;
+  /* RTL parity with the new 28px floor (was 26px). */
+  font-size: 28px;
   line-height: 1.4;
   font-weight: 600;
 }
@@ -770,15 +880,17 @@
 }
 .case-outcome .label {
   font-family: var(--font-body-en);
-  font-size: 22px;
+  /* LinkedIn readability: label floor 28px (was 22px). */
+  font-size: 28px;
   line-height: 1.3;
   color: var(--fg-2);
   font-weight: 500;
-  max-width: 420px;
+  max-width: 480px;
 }
 .slide[dir="rtl"] .case-outcome .label {
   font-family: var(--font-body-he);
-  font-size: 24px;
+  /* RTL parity with the new 28px floor (was 24px). */
+  font-size: 28px;
   line-height: 1.4;
   font-weight: 600;
 }
@@ -786,13 +898,14 @@
 /* ---- Metric / proof ---- */
 .metric-eyebrow {
   font-family: var(--font-mono-en);
-  font-size: 12px;
-  letter-spacing: 0.22em;
+  /* LinkedIn readability: eyebrow floor 28px (was 12px). */
+  font-size: 28px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--fg-3);
   margin-bottom: 24px;
   display: inline-flex;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
 }
 .metric-eyebrow::before {
@@ -808,21 +921,32 @@
 }
 .metric-hero {
   font-family: var(--font-mono-en);
-  font-size: 280px;
+  /* Default sized so multi-character values (1,300/wk · 12,500/mo · $1.4M)
+     fit inside the 888px slide-frame content width. Shorter values
+     (3-char like −80%) may inline-override up to 280px. */
+  font-size: 220px;
   font-weight: 600;
   letter-spacing: -0.06em;
-  line-height: 0.9;
+  line-height: 0.95;
   color: var(--accent);
   font-variant-numeric: tabular-nums;
   margin: 0;
   unicode-bidi: isolate;
   direction: ltr;
+  /* Defensive containment: keep the value on one line, never grow past
+     the content column. We deliberately do NOT use overflow:hidden —
+     clipping a hero metric is worse than letting an overlong value
+     hang. Authors should shorten copy or override via inline style. */
+  max-width: 100%;
+  white-space: nowrap;
 }
 .metric-hero .unit {
-  font-size: 0.5em;
+  /* Slightly tighter unit so 6-char values + 3-char units (12,500/mo)
+     stay inside 888px without clipping. */
+  font-size: 0.42em;
   color: var(--fg-1);
   letter-spacing: -0.04em;
-  margin-left: 0.04em;
+  margin-left: 0.02em;
 }
 .metric-caption {
   font-family: var(--font-body-en);
@@ -841,12 +965,14 @@
 }
 .metric-context {
   font-family: var(--font-mono-en);
-  font-size: 16px;
-  line-height: 1.5;
+  /* LinkedIn readability: annotation floor 28px (was 16px). */
+  font-size: 28px;
+  line-height: 1.4;
   color: var(--fg-2);
-  margin-top: 18px;
+  margin-top: 20px;
   display: inline-flex;
-  gap: 12px;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 .metric-context .ba {
   font-variant-numeric: tabular-nums;
@@ -879,13 +1005,14 @@
 }
 .punchline-cite {
   font-family: var(--font-mono-en);
-  font-size: 14px;
-  letter-spacing: 0.22em;
+  /* LinkedIn readability: citation floor 28px (was 14px). */
+  font-size: 28px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--fg-3);
   font-style: normal;
   display: inline-flex;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
 }
 .punchline-cite::before {
