@@ -278,18 +278,14 @@
 
 /* Primary footer logo rule — visible at LinkedIn's 25% feed scale.
    Targets the existing .footer-logo class used in every slide template;
-   the alias .brand-logo matches the inline-written-brand partial. */
+   the alias .brand-logo matches the inline-written-brand partial.
+   Single uniform width across all slides (cover and body) so the footer
+   wordmark reads consistently as readers swipe. */
 .slide-footer .wordmark-slot .footer-logo,
 .slide-footer .wordmark-slot .brand-logo {
-  width: 220px !important;   /* !important overrides legacy inline height/width on <img> */
+  width: 280px !important;   /* !important overrides legacy inline height/width on <img> */
   height: auto !important;
   display: block;
-}
-/* Cover slides anchor the logo a touch larger so the opening frame
-   reads as a branded cover even after compression. */
-.slide.is-cover .slide-footer .wordmark-slot .footer-logo,
-.slide.is-cover .slide-footer .wordmark-slot .brand-logo {
-  width: 280px !important;
 }
 
 .slide-footer .page-num {
