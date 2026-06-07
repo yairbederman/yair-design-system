@@ -19,6 +19,11 @@
   --bg-2: #242420;   /* elevated surface, modal */
   --bg-3: #2E2E29;   /* hover surface */
 
+  /* Carousel preview/export letterbox — the canvas BEHIND the .slide, not the
+     slide itself. Deliberately darker than --bg-0 so the slide reads as a panel.
+     Theme-independent chrome: defined once here, not overridden in light. */
+  --carousel-stage: #050507;
+
   --fg-1: #F4F1EA;   /* primary text — warm cream, never pure white */
   --fg-2: #B9B3AA;   /* secondary text — warm taupe */
   --fg-3: #837D72;   /* muted / tertiary / captions — warm gray */

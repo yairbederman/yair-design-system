@@ -32,7 +32,7 @@
   min-height: 100vh;
   display: grid;
   place-items: center;
-  background: #050507;
+  background: var(--carousel-stage);
   padding: 24px;
 }
 
