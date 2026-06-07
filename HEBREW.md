@@ -423,7 +423,7 @@ If self-hosting `.woff2`, ensure the Hebrew subset file is in the bundle. Test t
 
 The English light mode (`:root[data-theme="light"]` in `colors_and_type.css`) works for Hebrew without modification. No additional tokens needed — the RTL behavior is layout, not color.
 
-Verify: contrast of `--accent` (`#FF4B1F`) on light bg meets WCAG AA for the `[AI]` knockout treatment. It does (4.6:1 against `#FAFAF7`); document for the file.
+Verify: the `[AI]` knockout treatment on light uses **dark `AI` letters on the copper block** (`--accent` `#D96832` fill, `--fg-1` text) — the contrast that matters is text-on-accent, which clears AA (≥ 5:1). For accent *text* set directly on a light background (links), use `--accent-press` (`#BE5826`, ≈ 4.1:1 on `#F6F3EC`) rather than `--accent` itself, since softened copper on warm paper sits at ~3.2:1 — fine for large/UI, short of AA for body links.
 
 ## 18. Carousel page geometry — concrete sizes
 

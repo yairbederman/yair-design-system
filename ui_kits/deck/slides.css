@@ -167,8 +167,8 @@
 }
 .s-compare .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 .s-compare .col { border: 1px solid var(--rule); border-radius: 4px; padding: 32px; background: var(--bg-1); }
-.s-compare .col.bad  { border-color: rgba(229, 72, 77, 0.3); }
-.s-compare .col.good { border-color: var(--accent-rule); background: rgba(255, 75, 31, 0.04); }
+.s-compare .col.bad  { border-color: rgba(216, 90, 82, 0.3); }
+.s-compare .col.good { border-color: var(--accent-rule); background: rgba(217, 104, 50, 0.04); }
 .s-compare .col h3 {
   font-family: var(--font-mono-en);
   font-size: 14px; text-transform: uppercase;

@@ -61,25 +61,27 @@ All tokens live in `colors_and_type.css` as CSS custom properties. **Never hardc
 
 ### Color (dark, default)
 
+Refined Jun 2026 — neutral-warm charcoal + softened copper. Same structure as before (two-plus backgrounds, warm foregrounds, one accent, restrained status set); the blacks gained a faint warm cast and lifted off pure black, and the accent moved from a hot electric orange to a precise copper signal. See `COLOR.md` for token intents, contrast checks, and usage rules.
+
 | Token | Hex | Use |
 |---|---|---|
-| `--bg-0` | `#0A0A0B` | page background |
-| `--bg-1` | `#111114` | card / surface |
-| `--bg-2` | `#17171C` | elevated surface, modal |
-| `--bg-3` | `#1F1F26` | hover surface |
-| `--fg-1` | `#F5F5F2` | primary text (off-white, never pure) |
-| `--fg-2` | `#A0A0A8` | secondary text |
-| `--fg-3` | `#5A5A63` | tertiary, captions |
-| `--accent` | `#FF4B1F` | the `[AI]` block, links, focus rings, single CTA |
-| `--accent-hover` | `#FF6238` | accent hover |
-| `--accent-press` | `#E63E15` | accent press |
-| `--accent-soft` | `rgba(255, 75, 31, 0.12)` | accent fill (chips, alerts) |
-| `--accent-rule` | `rgba(255, 75, 31, 0.32)` | accent border |
-| `--rule` | `#26262E` | hairlines, dividers |
-| `--rule-strong` | `#34343E` | stronger borders, button outlines |
-| `--ok` | `#7AE0A1` | shipped / passed |
-| `--warn` | `#F5C518` | caution |
-| `--err` | `#E5484D` | error |
+| `--bg-0` | `#121211` | page background — warm near-black charcoal |
+| `--bg-1` | `#1A1A18` | card / surface |
+| `--bg-2` | `#242420` | elevated surface, modal |
+| `--bg-3` | `#2E2E29` | hover surface |
+| `--fg-1` | `#F4F1EA` | primary text (warm cream, never pure white) |
+| `--fg-2` | `#B9B3AA` | secondary text (warm taupe) |
+| `--fg-3` | `#837D72` | tertiary, captions, muted (warm gray) |
+| `--accent` | `#D96832` | softened copper — the `[AI]` block, links, focus rings, single CTA |
+| `--accent-hover` | `#E67E45` | accent hover (lighter copper) |
+| `--accent-press` | `#BE5826` | accent press (deeper copper); also accent-text-on-light |
+| `--accent-soft` | `rgba(217, 104, 50, 0.12)` | accent fill (chips, alerts) |
+| `--accent-rule` | `rgba(217, 104, 50, 0.30)` | accent border |
+| `--rule` | `#2A2A26` | hairlines, dividers |
+| `--rule-strong` | `#3A3A34` | stronger borders, button outlines |
+| `--ok` | `#6FB58A` | shipped / passed (muted sage) |
+| `--warn` | `#E0A93B` | caution (gold) |
+| `--err` | `#D85A52` | error (warm red) |
 
 ### Color (light, for print)
 
@@ -202,7 +204,7 @@ Bracketed, mono, no shadow.
 - Padding 4px 8px. Font: JetBrains Mono 500, 11px, uppercase, tracking 0.08em.
 - Default: `--fg-2` text on `--bg-2` with `--rule` border, 2px radius.
 - Accent: `--accent` text on `--accent-soft` with `--accent-rule` border.
-- Ok: `--ok` text on `rgba(122,224,161,0.10)` with matching 32% border.
+- Ok: `--ok` text on `rgba(111,181,138,0.10)` with matching 32% border.
 
 ### Inputs (`.input`)
 

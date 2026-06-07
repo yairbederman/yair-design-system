@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="y[AI]r studio">
   <title>y[AI]r studio — [AI] block avatar</title>
-  <rect width="64" height="64" fill="#0A0A0B" rx="6"></rect>
-  <rect x="12" y="18" width="40" height="28" rx="2" fill="#0A0A0B" stroke="#F5F5F2" stroke-width="2"></rect>
-  <text x="32" y="40" text-anchor="middle" font-size="20" font-family="ui-monospace, &#39;SFMono-Regular&#39;, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace" font-weight="700" fill="#F5F5F2" style="letter-spacing:-0.02em">AI</text>
+  <rect width="64" height="64" fill="#121211" rx="6"></rect>
+  <rect x="12" y="18" width="40" height="28" rx="2" fill="#121211" stroke="#F4F1EA" stroke-width="2"></rect>
+  <text x="32" y="40" text-anchor="middle" font-size="20" font-family="ui-monospace, &#39;SFMono-Regular&#39;, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace" font-weight="700" fill="#F4F1EA" style="letter-spacing:-0.02em">AI</text>
 </svg>

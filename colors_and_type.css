@@ -8,28 +8,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Mono:wght@400;700&family=Assistant:wght@400;500;600;700&family=Heebo:wght@400;500;600;700&family=Noto+Sans+Hebrew:wght@400;500;600;700&subset=hebrew&display=swap');
 
 :root {
-  /* ---------- Colors (dark, default) ---------- */
-  --bg-0: #0A0A0B;
-  --bg-1: #111114;
-  --bg-2: #17171C;
-  --bg-3: #1F1F26;
+  /* ---------- Colors (dark, default) ----------
+     Refined Jun 2026: neutral-warm charcoal + softened copper.
+     The charcoals carry a faint warm cast (never pure black) so the
+     surface ramp reads as engineered metal, not a dead-flat bunker.
+     Foregrounds are warm off-whites; the single accent is a precise
+     copper signal, not a hot warning light. */
+  --bg-0: #121211;   /* page — warm near-black charcoal, lifted off pure #000 */
+  --bg-1: #1A1A18;   /* card / surface */
+  --bg-2: #242420;   /* elevated surface, modal */
+  --bg-3: #2E2E29;   /* hover surface */
 
-  --fg-1: #F5F5F2;
-  --fg-2: #A0A0A8;
-  --fg-3: #5A5A63;
+  --fg-1: #F4F1EA;   /* primary text — warm cream, never pure white */
+  --fg-2: #B9B3AA;   /* secondary text — warm taupe */
+  --fg-3: #837D72;   /* muted / tertiary / captions — warm gray */
 
-  --accent:        #FF4B1F;
-  --accent-hover:  #FF6238;
-  --accent-press:  #E63E15;
-  --accent-soft:   rgba(255, 75, 31, 0.12);
-  --accent-rule:   rgba(255, 75, 31, 0.32);
+  --accent:        #D96832;              /* softened copper — the [AI], one CTA per view */
+  --accent-hover:  #E67E45;              /* lighter copper — hover / link underline */
+  --accent-press:  #BE5826;              /* deeper copper — pressed / accent-on-light text */
+  --accent-soft:   rgba(217, 104, 50, 0.12); /* tinted accent backgrounds */
+  --accent-rule:   rgba(217, 104, 50, 0.30); /* accent hairlines / chip borders */
 
-  --rule: #26262E;
-  --rule-strong: #34343E;
+  --rule: #2A2A26;        /* warm hairline, dividers, card borders */
+  --rule-strong: #3A3A34; /* stronger rule — button borders, emphasis */
 
-  --ok:   #7AE0A1;
-  --warn: #F5C518;
-  --err:  #E5484D;
+  --ok:   #6FB58A;   /* shipped / passed — muted sage, restrained */
+  --warn: #E0A93B;   /* caution — gold, kept yellow to stay distinct from copper */
+  --err:  #D85A52;   /* error — warm muted red */
 
   /* ---------- Typography ---------- */
   --font-display: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
@@ -62,15 +67,15 @@
   --fs-6xl:  5.5rem;    /* 88 */
 
   /* Line heights */
-  --lh-tight: 1.05;
-  --lh-snug:  1.2;
-  --lh-body:  1.55;
-  --lh-loose: 1.7;
+  --lh-tight: 1.05;  /* @kind font */
+  --lh-snug:  1.2;   /* @kind font */
+  --lh-body:  1.55;  /* @kind font */
+  --lh-loose: 1.7;   /* @kind font */
 
   /* Tracking */
   --tr-tight:   -0.02em;
   --tr-tighter: -0.04em;
-  --tr-normal:  0;
+  --tr-normal:  0;        /* @kind font */
   --tr-wide:    0.04em;
   --tr-ui:      0.08em;  /* uppercase mono labels */
 
@@ -92,37 +97,39 @@
   --r-lg: 8px;
 
   /* ---------- Elevation (no shadows; light edge only) ---------- */
-  --edge-top: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-  --edge-top-strong: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --edge-top: inset 0 1px 0 rgba(255, 255, 255, 0.04);        /* @kind shadow */
+  --edge-top-strong: inset 0 1px 0 rgba(255, 255, 255, 0.08); /* @kind shadow */
   --focus-ring: 0 0 0 2px var(--bg-0), 0 0 0 4px var(--accent);
 
   /* ---------- Motion ---------- */
-  --ease: cubic-bezier(0.2, 0, 0, 1);
-  --dur-fast: 120ms;
-  --dur:      160ms;
-  --dur-slow: 240ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1); /* @kind other */
+  --dur-fast: 120ms;  /* @kind other */
+  --dur:      160ms;  /* @kind other */
+  --dur-slow: 240ms;  /* @kind other */
 
   /* ---------- Layout ---------- */
   --content-max: 1200px;
   --gutter: 24px;
 }
 
-/* Light mode — for printed decks and proposals. */
+/* Light mode — for printed decks and proposals. Warm paper neutrals to
+   match the dark theme's cream/copper family; accent is shared. For accent
+   *text* on light (links), use --accent-press to clear AA. */
 :root[data-theme="light"] {
-  --bg-0: #FAFAF7;
-  --bg-1: #FFFFFF;
-  --bg-2: #F2F2EE;
-  --bg-3: #E8E8E2;
+  --bg-0: #F6F3EC;   /* warm paper page */
+  --bg-1: #FCFAF4;   /* card / surface */
+  --bg-2: #EFEBE1;   /* elevated surface */
+  --bg-3: #E4DFD3;   /* hover surface */
 
-  --fg-1: #0A0A0B;
-  --fg-2: #4A4A52;
-  --fg-3: #8A8A92;
+  --fg-1: #1A1916;   /* warm near-black primary text */
+  --fg-2: #57534B;   /* warm gray secondary */
+  --fg-3: #8A8479;   /* warm muted */
 
-  --rule: #DCDCD4;
-  --rule-strong: #C8C8C0;
+  --rule: #DED9CE;
+  --rule-strong: #C9C3B6;
 
-  --edge-top: inset 0 1px 0 rgba(0, 0, 0, 0.03);
-  --edge-top-strong: inset 0 1px 0 rgba(0, 0, 0, 0.06);
+  --edge-top: inset 0 1px 0 rgba(0, 0, 0, 0.03);        /* @kind shadow */
+  --edge-top-strong: inset 0 1px 0 rgba(0, 0, 0, 0.06); /* @kind shadow */
 }
 
 /* ============================================================
@@ -489,7 +496,7 @@ hr {
   border-radius: var(--r-sm);
 }
 .chip-accent { color: var(--accent); border-color: var(--accent-rule); background: var(--accent-soft); }
-.chip-ok     { color: var(--ok); border-color: rgba(122, 224, 161, 0.32); background: rgba(122, 224, 161, 0.10); }
+.chip-ok     { color: var(--ok); border-color: rgba(111, 181, 138, 0.32); background: rgba(111, 181, 138, 0.10); }
 
 /* Card */
 .card {

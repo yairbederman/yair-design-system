@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 110" width="380" height="110" role="img" aria-label="y[AI]r studio">
   <title>y[AI]r studio — light background</title>
-  <text x="6" y="70" font-size="64" font-family="ui-monospace, &#39;SFMono-Regular&#39;, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace" font-weight="500" fill="#5A5A63" style="letter-spacing:-0.02em">y</text>
-  <text x="50" y="70" font-size="64" font-family="ui-monospace, &#39;SFMono-Regular&#39;, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace" font-weight="500" fill="#5A5A63" style="letter-spacing:-0.02em">-</text>
-  <rect x="92" y="22" width="120" height="62" rx="2" fill="#0A0A0B"></rect>
-  <text x="152" y="68" text-anchor="middle" font-size="48" font-family="ui-monospace, &#39;SFMono-Regular&#39;, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace" font-weight="700" fill="#FAFAF7" style="letter-spacing:-0.02em">AI</text>
-  <text x="220" y="70" font-size="64" font-family="ui-monospace, &#39;SFMono-Regular&#39;, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace" font-weight="500" fill="#5A5A63" style="letter-spacing:-0.02em">-</text>
-  <text x="262" y="70" font-size="64" font-family="ui-monospace, &#39;SFMono-Regular&#39;, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace" font-weight="500" fill="#5A5A63" style="letter-spacing:-0.02em">r</text>
-  <text x="6" y="103" font-size="14" font-family="ui-monospace, &#39;SFMono-Regular&#39;, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace" font-weight="500" fill="#8A8A92" style="letter-spacing:0.6em">STUDIO</text>
+  <text x="6" y="70" font-size="64" font-family="ui-monospace, &#39;SFMono-Regular&#39;, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace" font-weight="500" fill="#837D72" style="letter-spacing:-0.02em">y</text>
+  <text x="50" y="70" font-size="64" font-family="ui-monospace, &#39;SFMono-Regular&#39;, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace" font-weight="500" fill="#837D72" style="letter-spacing:-0.02em">-</text>
+  <rect x="92" y="22" width="120" height="62" rx="2" fill="#121211"></rect>
+  <text x="152" y="68" text-anchor="middle" font-size="48" font-family="ui-monospace, &#39;SFMono-Regular&#39;, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace" font-weight="700" fill="#F6F3EC" style="letter-spacing:-0.02em">AI</text>
+  <text x="220" y="70" font-size="64" font-family="ui-monospace, &#39;SFMono-Regular&#39;, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace" font-weight="500" fill="#837D72" style="letter-spacing:-0.02em">-</text>
+  <text x="262" y="70" font-size="64" font-family="ui-monospace, &#39;SFMono-Regular&#39;, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace" font-weight="500" fill="#837D72" style="letter-spacing:-0.02em">r</text>
+  <text x="6" y="103" font-size="14" font-family="ui-monospace, &#39;SFMono-Regular&#39;, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace" font-weight="500" fill="#8A8479" style="letter-spacing:0.6em">STUDIO</text>
 </svg>

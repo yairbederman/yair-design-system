@@ -63,7 +63,7 @@ Side-by-side device frame switcher: language (en/he), viewport (mobile 375 / tab
 | Keyboard nav | All interactive elements are real `<a>` / `<button>` / form controls — no click-only divs. |
 | Tap targets | `.btn`, nav links, footer links enforce `min-height: 44px` regardless of font size. |
 | Form labels | Every input is wrapped in a `<label>` with a `.label-mono` caption. |
-| Color contrast | Body text `#A0A0A8` on `#0A0A0B` ≥ 7:1 (AAA). Accent `#FF4B1F` on `#0A0A0B` ≥ 4.5:1 (AA). |
+| Color contrast | Body text `#B9B3AA` on `#121211` ≥ 7:1 (AAA). Accent `#D96832` on `#121211` ≥ 4.5:1 (AA). |
 | Color-alone | Status chips combine color + `✓` glyph + status text — never color alone. |
 | Form errors | `aria-live="polite"` region in the contact submit row for status messages. |
 | Alt-text guidance | The site is typographic — no images. If portraits/screenshots are added, every `<img>` needs descriptive `alt` (or `alt=""` for purely decorative). |

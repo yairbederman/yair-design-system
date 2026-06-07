@@ -303,7 +303,7 @@
 /* ---- Cover-slide treatment ---- */
 .slide.is-cover {
   background:
-    radial-gradient(circle at 18% 8%, rgba(255,75,31,0.08), transparent 50%),
+    radial-gradient(circle at 18% 8%, rgba(217,104,50,0.08), transparent 50%),
     var(--bg-0);
 }
 
@@ -423,7 +423,7 @@
 /* ---- CTA-slide treatment ---- */
 .slide.is-cta {
   background:
-    radial-gradient(circle at 80% 90%, rgba(255,75,31,0.10), transparent 55%),
+    radial-gradient(circle at 80% 90%, rgba(217,104,50,0.10), transparent 55%),
     var(--bg-0);
 }
 
@@ -653,8 +653,8 @@
   justify-content: center;
   gap: 14px;
 }
-.ba-panel.before { border-color: rgba(229, 72, 77, 0.32); }
-.ba-panel.after  { border-color: var(--accent-rule); background: rgba(255, 75, 31, 0.04); }
+.ba-panel.before { border-color: rgba(216, 90, 82, 0.32); }
+.ba-panel.after  { border-color: var(--accent-rule); background: rgba(217, 104, 50, 0.04); }
 .ba-tag {
   font-family: var(--font-mono-en);
   /* LinkedIn readability: tag floor 28px (was 12px). */
@@ -732,7 +732,7 @@
   color: var(--fg-3);
   text-decoration: line-through;
   text-decoration-thickness: 2px;
-  text-decoration-color: rgba(229, 72, 77, 0.5);
+  text-decoration-color: rgba(216, 90, 82, 0.5);
   margin: 0 0 56px;
   max-width: 880px;
 }

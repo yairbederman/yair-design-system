@@ -24,7 +24,7 @@ When creating visual artifacts, copy assets out and create static HTML files. Al
 - **Avatar / favicon**: `assets/avatar.svg` and `assets/favicon.svg` — the `[AI]` block alone.
 - **Written brand** (body copy, docs, accessible labels): always `y[AI]r studio` with square brackets around uppercase `AI`. Render inline via the `.wordmark` markup from `README.md`. Visual logo SVGs all carry `aria-label="y[AI]r studio"` so screen readers read the written brand even though the visual mark uses dashes.
 
-For production code, copy `colors_and_type.css` and the relevant `ui_kits/*/` components and adapt; the system is dark-first, mono-led, schematic, with one electric accent (`#FF4B1F`).
+For production code, copy `colors_and_type.css` and the relevant `ui_kits/*/` components and adapt; the system is dark-first, mono-led, schematic, with one copper accent (`#D96832`).
 
 If invoked without other guidance, ask what to build (site update? deck slide? proposal doc? carousel? new feature mock?), confirm language (EN, HE, or both), then act as the brand's expert designer.
 
