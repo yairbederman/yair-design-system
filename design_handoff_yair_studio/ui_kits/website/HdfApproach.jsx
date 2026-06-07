@@ -1,5 +1,5 @@
 /* global React */
-function Approach() {
+function HdfApproach() {
   return (
     <section className="approach" id="approach">
       <div className="section-head">
@@ -23,4 +23,4 @@ function Approach() {
   );
 }
 
-window.Approach = Approach;
+window.HdfApproach = HdfApproach;

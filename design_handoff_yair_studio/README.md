@@ -264,7 +264,7 @@ Single-page React-ish prototype (plain JSX via Babel for the demo; reimplement i
 
 - `index.html` — entry point, loads React + Babel + the section JSX files
 - `site.css` — site-specific styles on top of the tokens
-- `Nav.jsx`, `Hero.jsx`, `Services.jsx`, `Approach.jsx`, `Work.jsx`, `Contact.jsx`
+- `HdfNav.jsx`, `HdfHero.jsx`, `HdfServices.jsx`, `HdfApproach.jsx`, `HdfWork.jsx`, `HdfContact.jsx` (components are `Hdf`-prefixed so the frozen snapshot can't collide with the live kit)
 - `README.md` — section-by-section notes
 
 Layout: 12-col grid, 1200px max content width, 24px gutters. Section padding 96–128px. Heavy hairline rules between sections. Section heads stamped with `01 — services` style indices.

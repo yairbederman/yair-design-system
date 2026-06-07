@@ -38,7 +38,7 @@ const WORK = [
   },
 ];
 
-function Work() {
+function HdfWork() {
   return (
     <section className="work" id="work">
       <div className="section-head">
@@ -71,4 +71,4 @@ function Work() {
   );
 }
 
-window.Work = Work;
+window.HdfWork = HdfWork;

@@ -4,12 +4,12 @@ Single-page marketing site. Sticky nav, hero with cursor-blink wordmark, four-se
 
 ## Components
 
-- `Nav.jsx` — sticky top bar, brand + nav + primary CTA
-- `Hero.jsx` — title + lead + meta strip with dot-grid background
-- `Services.jsx` — 2×2 indexed cards
-- `Approach.jsx` — ASCII pipeline diagram + 4 outcome metrics
-- `Work.jsx` — case-study list with status chips
-- `Contact.jsx` — 5-field form + footer
+- `HdfNav.jsx` — sticky top bar, brand + nav + primary CTA
+- `HdfHero.jsx` — title + lead + meta strip with dot-grid background
+- `HdfServices.jsx` — 2×2 indexed cards
+- `HdfApproach.jsx` — ASCII pipeline diagram + 4 outcome metrics
+- `HdfWork.jsx` — case-study list with status chips
+- `HdfContact.jsx` — 5-field form + footer (defines `HdfContact` + `HdfFooter`)
 
 ## Patterns demonstrated
 

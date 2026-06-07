@@ -26,7 +26,7 @@ const SERVICES = [
   },
 ];
 
-function Services() {
+function HdfServices() {
   return (
     <section className="services" id="services">
       <div className="section-head">
@@ -49,4 +49,4 @@ function Services() {
   );
 }
 
-window.Services = Services;
+window.HdfServices = HdfServices;

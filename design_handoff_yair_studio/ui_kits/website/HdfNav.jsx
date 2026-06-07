@@ -1,7 +1,7 @@
 /* global React */
 const { useState } = React;
 
-function Nav() {
+function HdfNav() {
   return (
     <nav className="site-nav">
       <a className="brand" href="#top">
@@ -27,4 +27,4 @@ function Nav() {
   );
 }
 
-window.Nav = Nav;
+window.HdfNav = HdfNav;

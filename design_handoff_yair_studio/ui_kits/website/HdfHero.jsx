@@ -1,5 +1,5 @@
 /* global React */
-function Hero() {
+function HdfHero() {
   return (
     <section className="hero" id="top">
       <div className="dot-grid hero-bg"></div>
@@ -40,4 +40,4 @@ function Hero() {
   );
 }
 
-window.Hero = Hero;
+window.HdfHero = HdfHero;

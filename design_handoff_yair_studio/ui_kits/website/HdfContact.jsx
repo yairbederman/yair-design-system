@@ -1,7 +1,7 @@
 /* global React */
 const { useState } = React;
 
-function Contact() {
+function HdfContact() {
   const [sent, setSent] = useState(false);
   return (
     <section className="contact" id="contact">
@@ -32,7 +32,7 @@ function Contact() {
   );
 }
 
-function Footer() {
+function HdfFooter() {
   return (
     <footer className="site-footer">
       <div className="footer-l">
@@ -54,5 +54,5 @@ function Footer() {
   );
 }
 
-window.Contact = Contact;
-window.Footer = Footer;
+window.HdfContact = HdfContact;
+window.HdfFooter = HdfFooter;
